@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>트레이너 시간표 - 최종본</title>
+  <link rel="stylesheet" href="css/123.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="img/ChatGPT Image 2025년 5월 16일 오후 06_09_58.png" alt="할건해야짐" />
+    </div>
+    <ul class="nav">
+      <li>회원관리</li>
+      <li>기구현황</li>
+      <li>매출현황</li>
+      <li>문의사항</li>
+      <li>로그아웃</li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="calendar" id="calendar"></div>
+    <div class="schedule">
+      <h3 id="selected-date-title">날짜를 선택하세요</h3>
+      <div class="buttons">
+        <button onclick="saveData()">저장</button>
+        <button onclick="enableEditing()">수정</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>시간</th>
+            <th>김계란</th>
+            <th>손흥민</th>
+            <th>이강인</th>
+            <th>기성용</th>
+            <th>박지성</th>
+          </tr>
+        </thead>
+        <tbody id="schedule-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/123.js"></script>
+</body>
+
+<footer class="footer">
+  <div class="footer-top">
+    <img src="img/ChatGPT Image 2025년 5월 16일 오후 06_09_58.png" alt="할건해야짐" class="footer-logo" />
+    <ul class="footer-menu">
+      <li>회원관리</li>
+      <li>기구현황</li>
+      <li>매출관리</li>
+      <li>문의사항</li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    카피라이트 어쩌고
+  </div>
+</footer>
+</html>
