@@ -1,4 +1,4 @@
-package com.hhg.user;
+package com.hhg.member;
 
 public class example {
 
