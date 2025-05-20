@@ -4,9 +4,9 @@
 <html>
 <head>
 	<title>운동기구 현황 리스트</title>
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/machine.css">
 </head>
 <body>
-	<jsp:include page="/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
 	<div class="container">
@@ -25,6 +25,7 @@
          </div>
          <div class="check-list">
             <div class="check">
+            	<span>점검 여부</span>
                <div class="day">
                   <label for="mon">월</label>
                   <input type="checkbox" id="mon">
@@ -63,6 +64,5 @@
    </div>
 	
 	<%-- [Contents] ######################################################### --%>
-	<jsp:include page="/layout/footer.jsp" />
 </body>
 </html>
