@@ -1,0 +1,202 @@
+@charset "UTF-8";
+li {list-style: none;}
+
+body {
+  font-family: Arial;
+  /* padding: 20px;  */
+}
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+.calendar {
+  width: 630px;
+  height: 1000px;
+  background-color: #f8f8f8;
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 200px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #f3f3f3;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 480px;
+}
+.calendar-day, .calendar-date {
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+.calendar-date:hover {
+  background-color: #e1f5fe;
+  cursor: pointer;
+}
+.calendar-date.selected {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: bold;
+}
+.calendar-date.today {
+  border: 2px solid #2ecc71;
+}
+.schedule {
+  flex: 1;
+}
+.schedule table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.schedule th, .schedule td {
+  border: 1px solid #eee;
+  height: 40px;
+  text-align: center;
+}
+
+.selected-time {
+  background-color: #87CEFA !important;
+}
+.cell-input {
+  border: none;
+  text-align: center;
+  background: transparent;
+  width: 90px;
+  outline: none;
+  font-size: 15px;
+}
+.cell-checkbox {
+  transform: scale(1.2);
+}
+.cell-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.buttons {
+  margin-top: 10px;
+  display : flex;
+  justify-content: flex-end;
+  gap : 20px;
+  padding-bottom : 10px;
+
+}
+.buttons .btn {
+  height : 30px;
+  width : 100px;
+  text-align: center;
+  font-size : 15px;
+  border : none;
+}
+.buttons .btn:hover {
+ 	background-color : #2ecc71;
+ 	color : white;
+}
+
+
+.navbar {
+  background-color: #2D3E50 !important;
+  padding: 0 50px;
+}
+
+
+
+.navbar-brand img {
+  height: 80px;
+}
+
+.navbar-nav {
+  gap: 80px;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+.navbar-nav-login {
+  gap: 60px;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav-login .nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #2ecc71;
+}
+.navbar-nav-login .nav-link:hover {
+  color: #2ecc71;
+}
+
+footer {
+ 	background-color: #2D3E50 !important;
+}
+
+.footer-con {
+	padding: 0px 50px;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.footer-logo {
+  height: 80px;
+}
+
+.footer-menu {
+  display: flex;
+  gap: 60px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer-menu li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-menu li a:hover {
+  color: #2ecc71 !important;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+  color: #aaa;
+}
+
+
+
+.time-cell {
+  width: 110px;
+  background-color: #f8f8f8;  /* 원하는 색상 */
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  vertical-align: middle;
+}

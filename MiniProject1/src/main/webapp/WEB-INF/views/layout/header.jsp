@@ -1,54 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/layout/common.jsp" %>
-<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layout/common.jsp" %>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root %>/">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= root %>/board/list">Board</a>
-        </li>
+    <!-- 로고 / 홈 링크 -->
+    <a class="navbar-brand" href="<%= root %>/">
+      <img src="static/img/logo.png" alt="할건해야짐" width="80" height="80" class="d-inline-block align-text-top">
+    </a>
+
+    <!-- 메뉴 -->
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <!-- 왼쪽 메뉴 -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">기구현황</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">매출현황</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">문의사항</a></li>
       </ul>
-       <ul class="navbar-nav d-flex align-items-center px-3">
-       
-       	<%
-			if( loginId == null || loginId.equals("") ) {
-		%>
-       	<!-- 비로그인 시 -->
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<%= root %>/login.jsp">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<%= root %>/join.jsp">회원가입</a>
-        </li>
-        <li class="nav-item">
-        </li>
-        
+
+      <!-- 오른쪽 로그인/로그아웃 -->
+      <ul class="navbar-nav-login mb-lg-0 d-flex align-items-center">
         <%
-			}
-        	else {
+          if (loginId == null || loginId.equals("")) {
         %>
-        <!-- 로그인 시 -->
-        <li class="nav-item">
-        <div class="dropdown">
-	      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-	        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-<%-- 	        <strong><%= loginId %></strong> --%>
-	      </a>
-	      <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-	        <li><a class="dropdown-item" href="<%= root %>/users/my">마이 페이지</a></li>
-	        <li><a class="dropdown-item" href="<%= root %>/users/update">회원정보 수정</a></li>
-	        <li><hr class="dropdown-divider"></li>
-	        <li><a class="dropdown-item" href="<%= root %>/users/logout">로그아웃</a></li>
-	      </ul>
-	    </div>
-        </li>
+          <!-- 비로그인 시 -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">회원가입</a>
+          </li>
         <%
-        	}
+          } else {
+        %>
+          <!-- 로그인 시 -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong><%= loginId %></strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+              <li><a class="dropdown-item" href="<%= root %>/users/logout">로그아웃</a></li>
+            </ul>
+          </li>
+        <%
+          }
         %>
       </ul>
     </div>
