@@ -1,4 +1,4 @@
-<%-- 전역변수 --%>
+<%-- 전역변수 --%>
 <%
 	// Context Path (루트 경로)
 	String root = request.getContextPath();
