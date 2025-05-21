@@ -5,6 +5,7 @@
 	// 로그인 아이디 (세션)
 	String loginId = (String) session.getAttribute("loginId");	
 	// ...
+	pageContext.setAttribute("root", root);
 %>
 
 
