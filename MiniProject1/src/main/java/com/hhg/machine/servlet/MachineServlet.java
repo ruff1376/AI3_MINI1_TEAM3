@@ -1,4 +1,4 @@
-package com.machine.servlet;
+package com.hhg.machine.servlet;
 
 import java.io.IOException;
 

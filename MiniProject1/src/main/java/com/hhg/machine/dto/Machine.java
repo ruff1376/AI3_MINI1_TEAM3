@@ -1,4 +1,4 @@
-package com.machine.dto;
+package com.hhg.machine.dto;
 
 
 import com.alohaclass.jdbc.annotation.Pk;
