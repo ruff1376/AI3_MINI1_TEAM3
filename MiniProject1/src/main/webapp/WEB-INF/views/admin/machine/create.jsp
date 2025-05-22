@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>project💻 - ALOHA CLASS🌴</title>
+	<title>운동기구 등록</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>

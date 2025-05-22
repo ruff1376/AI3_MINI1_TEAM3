@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>운동기구 현황 리스트</title>
+	<title>운동기구 리스트 메인</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>운동기구 현황 리스트</title>
+	<title>운동기구 조회/수정/삭제</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
