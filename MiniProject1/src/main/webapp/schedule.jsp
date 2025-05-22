@@ -1,46 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.sql.*, java.util.*" %>
-<%
-	String selectedDate = request.getParameter("date");
-  	if (selectedDate == null || selectedDate.trim().isEmpty()) {
-    	selectedDate = "";
-  	}
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> <%-- 문자열 이스케이프 처리용 --%>
 
-  	List<String> jsonList = new ArrayList<>();
-
-  	if (!selectedDate.isEmpty()) {
-    	try {
-      		Class.forName("com.mysql.cj.jdbc.Driver");
-      		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/health", "aloha", "123456");
-
-	      	String sql = "SELECT trainer_name, time_range, memo, is_checked FROM trainer_schedule WHERE schedule_date = ?";
-	      	PreparedStatement pstmt = conn.prepareStatement(sql);
-	      	pstmt.setString(1, selectedDate);
-	      	ResultSet rs = pstmt.executeQuery();
-
-      	while (rs.next()) {
-	        String trainer = rs.getString("trainer_name");
-	        String time = rs.getString("time_range");
-	        String memo = rs.getString("memo") == null ? "" : rs.getString("memo").replace("\"", "\\\"");
-	        boolean checked = rs.getBoolean("is_checked");
-
-        	String json = String.format(
-          		"{\"trainer\":\"%s\", \"time\":\"%s\", \"memo\":\"%s\", \"checked\":%s}",
-          		trainer, time, memo, checked
-        	);
-       		jsonList.add(json);
-      	}
-
-      		rs.close();
-      		pstmt.close();
-      		conn.close();
-    	} catch (Exception e) {
-      		e.printStackTrace();
-    	}
- 	}
-
-	String jsonSavedData = "[" + String.join(",", jsonList) + "]";
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -50,47 +11,65 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
-	<main>
-  		<div class="container-fluid d-flex gap-3 px-1 my-2">
-   			<div class="calendar border rounded p-3 bg-light" id="calendar" style="width: 630px; height: 1000px;"></div>
-    		<div class="schedule flex-grow-1 border rounded p-3 bg-light">
-      			<h3 id="selected-date-title" class="mb-3 d-flex justify-content-center">
-        			<%= selectedDate.isEmpty() ? "날짜를 선택하세요" : selectedDate + " 예약 스케줄" %>
-       			</h3>
-				<form action="ScheduleSaveServlet" method="post">
-  					<input type="hidden" name="date" id="selected-date-value" value="<%= selectedDate %>">
+<main>
+	<div class="container-fluid d-flex gap-3 px-1 my-2">
+		<div class="calendar border rounded p-3 bg-light" id="calendar" style="width: 630px; height: 1000px;"></div>
+		<div class="schedule flex-grow-1 border rounded p-3 bg-light">
+			<h3 id="selected-date-title" class="mb-3 d-flex justify-content-center">
+				<c:choose>
+					<c:when test="${empty selectedDate}">날짜를 선택하세요</c:when>
+					<c:otherwise>${selectedDate} 예약 스케줄</c:otherwise>
+				</c:choose>
+			</h3>
 
-  					<!-- ✅ 예약 버튼: 테이블 위 -->
-  					<div class="text-end mb-3">
-    					<button type="submit" class="btn btn-success px-4">저장하기</button>
-  					</div>
+			<!-- ✅ action="schedule" 으로 수정 -->
+			<form action="schedule" method="post">
+				<input type="hidden" name="date" id="selected-date-value" value="${selectedDate}">
 
-  					<!-- 스케줄 테이블 -->
-  					<div class="table-responsive">
-    					<table class="table table-bordered text-center align-middle">
-      						<thead class="table-light">
-						        <tr>
-						          <th style="width: 110px;">시간</th>
-						          <th>김계란</th>
-						          <th>손흥민</th>
-						          <th>이강인</th>
-						          <th>기성용</th>
-						          <th>박지성</th>
-						        </tr>
-					      	</thead>
-					      <tbody id="schedule-body">
-					        <!-- JS로 시간표 셀 자동 생성 -->
-					      </tbody>
-    					</table>
-  					</div>
-				</form>
-    		</div>
-  		</div>
-	</main>
+				<div class="text-end mb-3">
+					<button type="submit" class="btn btn-success px-4">저장하기</button>
+				</div>
+
+				<div class="table-responsive">
+					<table class="table table-bordered text-center align-middle">
+						<thead class="table-light">
+							<tr>
+								<th style="width: 110px;">시간</th>
+								<c:forEach var="t" items="${trainerList}">
+									<th>${t}</th>
+								</c:forEach>
+							</tr>
+						</thead>
+						<tbody id="schedule-body">
+							<!-- JS가 자동 생성 -->
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+
+<!-- JSTL → JS 데이터로 변환 -->
 <script>
-  const initialSelectedDate = "<%= selectedDate %>";
-  const savedEntries = <%= jsonSavedData %>;
+  const initialSelectedDate = "${selectedDate}";
+  const trainers = [
+    <c:forEach var="t" items="${trainerList}" varStatus="loop">
+      "${t}"<c:if test="${!loop.last}">,</c:if>
+    </c:forEach>
+  ];
+
+  const savedEntries = [
+    <c:forEach var="entry" items="${scheduleList}" varStatus="loop">
+      {
+        "trainer": "${entry.trainer}",
+        "time": "${entry.time}",
+        "memo": "${fn:replace(entry.memo, '\"', '\\\"')}",
+        "checked": ${entry.checked}
+      }<c:if test="${!loop.last}">,</c:if>
+    </c:forEach>
+  ];
 </script>
 <script src="static/js/schedule.js"></script>
 </body>
