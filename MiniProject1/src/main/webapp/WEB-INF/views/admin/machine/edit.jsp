@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>운동기구 현황 리스트</title>
+	<title>운동기구 조회/수정/삭제</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
@@ -41,12 +41,14 @@
       <label class="form-label">상태</label>
       <input type="text" name="status" value="${machine.status}" class="form-control" required />
     </div>
-    <div class="mb-3">
-    <button type="submit" class="btn btn-primary ms-2">수정</button>
-    </div>
-    <div class="mb-1">
-    	<a href="<%=request.getContextPath()%>/admin/machine/list?category=${machine.category}" class="btn btn-primary ms-2">목록</a>
-    	<button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+    	<div>
+    		<a href="<%=request.getContextPath()%>/admin/machine/list?category=${machine.category}" class="btn btn-primary ms-2">목록</a>
+    	</div>
+    	<div>
+	    	<button type="submit" class="btn btn-primary ms-2">수정</button>
+	    	<button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
+    	</div>
     </div>
   </form>
 <%--   <form action="<c:url value='/admin/machine/delete'/>" method="post" style="display:inline;"> --%>
@@ -56,11 +58,18 @@
 	
 	<%-- [Contents] ######################################################### --%>
 	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/layout/script.jsp" />
 	
 
 	<script type="text/javascript">
+		const root = "${ root }"
+		const form = $('#form')
 		function remove() {
-					
+			const check = confirm("정말로 삭제하시겠습니까?") 
+			if( !check ) return
+			const url = root + "/admin/machine/delete"
+			form.attr("action", url)
+			form.submit()
 		}
 	</script>
 </body>
