@@ -1,4 +1,4 @@
-package com.machine.service;
+package com.hhg.machine.service;
 
 public interface MachineService {
 
