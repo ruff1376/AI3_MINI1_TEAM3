@@ -5,15 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원관리</title>
-<jsp:include page="../../layout/link.jsp" />
-<link rel="stylesheet" href="<%=root%>/static/css/member.css" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+	<meta charset="UTF-8">
+	<title>회원관리</title>
+	<jsp:include page="../../layout/link.jsp" />
+	<link rel="stylesheet" href="<%=root%>/static/css/member.css" />
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+		rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
 </head>
 <body>

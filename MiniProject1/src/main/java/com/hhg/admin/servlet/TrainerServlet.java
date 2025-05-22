@@ -25,8 +25,8 @@ public class TrainerServlet extends HttpServlet {
 		String page = "";
 		
 //		System.out.println(path);
-//		List<Trainer> trainerList = trainerService.list();
-//		request.setAttribute("trainerList", trainerList);
+		List<Trainer> trainerList = trainerService.list();
+		request.setAttribute("trainerList", trainerList);
 		page = "/WEB-INF/views/admin/index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
