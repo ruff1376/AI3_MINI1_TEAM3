@@ -1,26 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="/WEB-INF/views/layout/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>운동기구 현황 리스트</title>
-<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/machine.css"> --%>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
 <div class="container text-center mt-5">
     <h1 class="display-5">운동기구 카테고리</h1>
     <div class="btn-group mt-4" role="group">
-        <a href="machinelist?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
-        <a href="machinelist?category=CABLE" class="btn btn-outline-secondary">CABLE</a>
-        <a href="machinelist?category=PLATE" class="btn btn-outline-success">PLATE</a>
-        <a href="machinelist?category=ETC" class="btn btn-outline-danger">ETC</a>
+        <a href="list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
+        <a href="list?category=CABLE" class="btn btn-outline-secondary">CABLE</a>
+        <a href="list?category=PLATE" class="btn btn-outline-success">PLATE</a>
+        <a href="list?category=ETC" class="btn btn-outline-danger">ETC</a>
     </div>
 </div>
 	
 	<%-- [Contents] ######################################################### --%>
-	
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 </body>
 </html>

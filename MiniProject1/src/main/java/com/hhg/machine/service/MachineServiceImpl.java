@@ -34,30 +34,35 @@ public class MachineServiceImpl implements MachineService{
 	}
 
 	@Override
-	public void insert(GymMachine machine) {
+	public GymMachine insert(GymMachine machine) {
 	    try {
 	        gmDAO.insert(machine);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+		return machine;
 	}
 
 	@Override
-	public void update(GymMachine machine) {
+	public boolean update(GymMachine machine) {
+		int result = 0;
 	    try {
-	        gmDAO.update(machine);
+	    	result = gmDAO.update(machine);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+		return result > 0;
 	}
 
 	@Override
-	public void delete(int id) {
+	public boolean delete(int no) {
+		int result = 0;
 	    try {
-	        gmDAO.delete(id);
+	       result = gmDAO.delete(no);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+		return result > 0;
 	}
 
 }

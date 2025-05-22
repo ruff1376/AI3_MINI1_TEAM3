@@ -12,10 +12,10 @@ public interface MachineService {
 	// 수정시 기구번호로 찾기
     GymMachine findById(int id);
     // 등록
-    void insert(GymMachine machine);
+    GymMachine insert(GymMachine machine);
     // 수정
-    void update(GymMachine machine);
+    boolean update(GymMachine machine);
     // 삭제
-    void delete(int id);
+    boolean delete(int no);
 
 }
