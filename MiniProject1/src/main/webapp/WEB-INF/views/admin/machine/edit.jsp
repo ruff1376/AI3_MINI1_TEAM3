@@ -1,19 +1,25 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="/WEB-INF/views/layout/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>운동기구 현황 리스트</title>
-<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/machine.css"> --%>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <h2>기구 정보 수정</h2>
-  <form action="<c:url value='/admin/machine/edit'/>" method="post">
-    <input type="hidden" name="gymMachineId" value="${machine.gymMachineId}" />
+  <form id="form" action="<c:url value='/admin/machine/edit'/>" method="post">
+    <input type="hidden" name="id" value="${machine.id}" />
+    <div class="mb-3">
+      <label class="form-label">장비 번호</label>
+      <input type="text" name="id" value="${machine.id}" class="form-control" readonly />
+    </div>
     <div class="mb-3">
       <label class="form-label">기구명</label>
       <input type="text" name="name" value="${machine.name}" class="form-control" required />
@@ -35,12 +41,27 @@
       <label class="form-label">상태</label>
       <input type="text" name="status" value="${machine.status}" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">수정</button>
-    <a href="<c:url value='/admin/machine/delete?id=${machine.gymMachineId}'/>" class="btn btn-danger ms-2">삭제</a>
+    <div class="mb-3">
+    <button type="submit" class="btn btn-primary ms-2">수정</button>
+    </div>
+    <div class="mb-1">
+    	<a href="<%=request.getContextPath()%>/admin/machine/list?category=${machine.category}" class="btn btn-primary ms-2">목록</a>
+    	<button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
+    </div>
   </form>
+<%--   <form action="<c:url value='/admin/machine/delete'/>" method="post" style="display:inline;"> --%>
+<%--     <input type="hidden" name="id" value="${machine.id}"> --%>
+<!-- </form> -->
 </div>
 	
 	<%-- [Contents] ######################################################### --%>
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 	
+
+	<script type="text/javascript">
+		function remove() {
+					
+		}
+	</script>
 </body>
 </html>

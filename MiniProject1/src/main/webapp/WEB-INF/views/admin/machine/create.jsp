@@ -1,50 +1,59 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="/WEB-INF/views/layout/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>project💻 - ALOHA CLASS🌴</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-	<div class="container mt-5">
-  <h2 class="mb-4">${param.category} 기구 목록</h2>
-  <div class="mb-3">
-    <a href="<c:url value='/admin/machine/register'/>" class="btn btn-primary">기구 등록</a>
+<div class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">운동기구 등록</h4>
+    </div>
+    <div class="card-body">
+      <form action="<%=request.getContextPath()%>/admin/machine/create" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">기구명</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="기구명 입력" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="brand" class="form-label">브랜드</label>
+          <input type="text" class="form-control" id="brand" name="brand" placeholder="브랜드 입력" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="category" class="form-label">카테고리</label>
+          <select class="form-select" id="category" name="category" required>
+            <option value="">카테고리 선택</option>
+            <option value="CARDIO">CARDIO</option>
+            <option value="CABLE">CABLE</option>
+            <option value="PLATE">PLATE</option>
+            <option value="ETC">ETC</option>
+          </select>
+        </div>
+        
+        <div class="mb-3">
+          <label for="status" class="form-label">상태</label>
+          <input type="text" class="form-control" id="status" name="status" placeholder="상태 입력" required>
+        </div>
+        
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-lg">등록</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <table class="table table-bordered text-center">
-    <thead class="table-dark">
-      <tr>
-        <th>#</th>
-        <th>기구명</th>
-        <th>브랜드</th>
-        <th>상태</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach var="machine" items="${machines}">
-        <tr>
-          <td>${machine.gymMachineId}</td>
-          <td>
-            <a href="<c:url value='/admin/machine/edit?id=${machine.gymMachineId}'/>">
-              ${machine.name}
-            </a>
-          </td>
-          <td>${machine.brand}</td>
-          <td>${machine.status}</td>
-        </tr>
-      </c:forEach>
-      <c:if test="${empty machines}">
-        <tr>
-          <td colspan="4">등록된 기구가 없습니다.</td>
-        </tr>
-      </c:if>
-    </tbody>
-  </table>
 </div>
 	
 	<%-- [Contents] ######################################################### --%>
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 </body>
 </html>
