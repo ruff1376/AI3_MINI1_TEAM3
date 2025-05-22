@@ -11,8 +11,8 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container text-center mt-5">
-    <h1 class="display-5">운동기구 카테고리</h1>
+<div class="container text-center mt-5 mb-5">
+    <h2>운동기구 카테고리</h2>
     <div class="btn-group mt-4" role="group">
         <a href="list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
         <a href="list?category=CABLE" class="btn btn-outline-secondary">CABLE</a>

@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="card shadow-lg">
     <div class="card-header bg-primary text-white">
       <h4 class="mb-0">운동기구 등록</h4>

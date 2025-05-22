@@ -12,10 +12,10 @@
 	<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container mt-5">
+<div class="container text-center mt-5 mb-5">
     <h2>${param.category} 기구 목록</h2>
-    <a href="create" class="btn btn-success mb-3">기구 등록</a>
-    <div class="btn-group mt-4" role="group">
+    <div class="btn-group mt-4 mb-5" role="group">
+   		<a href="create" class="btn btn-outline-success">기구 등록</a>
         <a href="list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
         <a href="list?category=CABLE" class="btn btn-outline-secondary">CABLE</a>
         <a href="list?category=PLATE" class="btn btn-outline-success">PLATE</a>
