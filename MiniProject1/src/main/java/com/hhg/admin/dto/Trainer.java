@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("Trainer")
+@Table("trainer")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

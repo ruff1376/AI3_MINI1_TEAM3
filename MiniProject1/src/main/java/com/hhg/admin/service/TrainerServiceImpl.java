@@ -2,13 +2,22 @@ package com.hhg.admin.service;
 
 import java.util.List;
 
+import com.hhg.admin.dao.TrainerDAO;
 import com.hhg.admin.dto.Trainer;
 
 public class TrainerServiceImpl implements TrainerService {
 	
+	private TrainerDAO trainerDAO = new TrainerDAO();
+	
 	@Override
 	public List<Trainer> list() {
-		return null;
+		List<Trainer> list = null;
+		try {
+			list = trainerDAO.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
