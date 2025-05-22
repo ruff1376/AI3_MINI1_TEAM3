@@ -1,18 +1,19 @@
 package com.hhg.machine.dto;
 
-
 import com.alohaclass.jdbc.annotation.Pk;
+import com.alohaclass.jdbc.annotation.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Table("gym")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Machine {
+public class GymMachine {
 	
 	@Pk
 	private int gymMachineId;
@@ -20,5 +21,4 @@ public class Machine {
 	private String brand;
 	private String category;
 	private String status;
-	private String comment;
 }
