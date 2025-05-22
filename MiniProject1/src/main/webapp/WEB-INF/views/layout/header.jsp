@@ -5,7 +5,7 @@
 	<div class="container-fluid">
     	<!-- 로고 / 홈 링크 -->
     	<a class="navbar-brand" href="<%= root %>/">
-      		<img src="static/img/logo.png" alt="할건해야짐" width="80" height="80" class="d-inline-block align-text-top">
+      		<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" width="80" height="80" class="d-inline-block align-text-top">
     	</a>
 
    		<!-- 메뉴 -->
