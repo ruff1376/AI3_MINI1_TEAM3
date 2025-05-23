@@ -22,6 +22,17 @@ public class MachineServiceImpl implements MachineService{
 		}
 		return null;
 	}
+	
+	@Override
+	public List<GymMachine> list() {
+		List<GymMachine> list = null;
+		try {
+			list = gmDAO.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	@Override
 	public GymMachine findById(int id) {
