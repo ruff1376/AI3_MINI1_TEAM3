@@ -10,4 +10,6 @@ public interface TrainerService {
 	Trainer insert(Trainer trainer);
 	boolean update(Trainer trainer);
 	boolean delete(Trainer trainer);
+	
+	List<Trainer> listWithSales();
 }
