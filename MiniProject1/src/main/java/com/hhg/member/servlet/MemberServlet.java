@@ -21,18 +21,17 @@ public class MemberServlet extends HttpServlet {
 	private MemberService memberService = new MemberServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String path = request.getPathInfo();
 		String page = "";
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		Member member = memberService.read(id);
+		PTHistory pt = ptHistoryService.findByMemberId(id); // usedCount, totalCount 포함된 객체
 		
-//		System.out.println(path);
 		List<Member> memberList = memberService.list();
 		request.setAttribute("memberList", memberList);
 		page = "/WEB-INF/views/admin/member/member.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
 	}
-
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	}
 
 }
