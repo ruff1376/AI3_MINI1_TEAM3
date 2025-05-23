@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg px-5 py-0">
 	<div class="container-fluid">
     	<!-- 로고 / 홈 링크 -->
-    	<a class="navbar-brand" href="<%= root %>/">
+    	<a class="navbar-brand" href="<%= root %>/admin">
       		<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" width="80" height="80" class="d-inline-block align-text-top">
     	</a>
 
