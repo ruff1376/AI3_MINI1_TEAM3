@@ -105,7 +105,7 @@ public class MachineServlet extends HttpServlet {
 										   .brand(brand)
 										   .category(category)
 										   .status(status)
-										   .id(id)
+										   .gymMachineId(id)
 										   .build();
 			try {
 				boolean result = machineService.update(machine);

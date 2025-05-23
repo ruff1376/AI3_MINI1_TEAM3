@@ -36,3 +36,14 @@
 	max-width: 300px;
 	margin: 0 auto 20px auto;
 }
+
+.date-display {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+input[type="date"] {
+	opacity: 0;
+	position: absolute;
+	pointer-events: none;
+}

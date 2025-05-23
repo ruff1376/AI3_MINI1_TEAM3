@@ -22,7 +22,13 @@ public class TrainerServiceImpl implements TrainerService {
 
 	@Override
 	public Trainer select(int no) {
-		return null;
+		Trainer trainer = null;
+		try {
+			trainer = trainerDAO.select(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return trainer;
 	}
 
 	@Override

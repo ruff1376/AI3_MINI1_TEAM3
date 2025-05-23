@@ -9,6 +9,7 @@ public interface MachineService {
 	
 	// 기구 목록
 	List<GymMachine> findByCategory(String category);
+	List<GymMachine> list();
 	// 수정시 기구번호로 찾기
     GymMachine findById(int id);
     // 등록
