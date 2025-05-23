@@ -30,7 +30,6 @@ public class MachineServlet extends HttpServlet {
 		String path = request.getPathInfo();
 		String page = "";
 		// 메인 띄우기
-		System.out.println(path);
 		if( path == null || path.equals("/") ) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/admin/machine/machine.jsp");
 			dispatcher.forward(request, response);
