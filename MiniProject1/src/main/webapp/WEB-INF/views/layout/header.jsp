@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg px-5 py-0">
 	<div class="container-fluid">
     	<!-- 로고 / 홈 링크 -->
-    	<a class="navbar-brand" href="<%= root %>/">
+    	<a class="navbar-brand" href="<%= root %>/admin">
       		<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" width="80" height="80" class="d-inline-block align-text-top">
     	</a>
 
@@ -21,14 +21,14 @@
       		<!-- 오른쪽 로그인/로그아웃 -->
       		<ul class="navbar-nav-login mb-lg-0 d-flex align-items-center">
 	        	<%
-	          	if (loginId == null || loginId.equals("")) {
+	          		if (loginId == null || loginId.equals("")) {
 	        	%>
 	          	<!-- 비로그인 시 -->
 	          	<li class="nav-item">
 	            	<a class="nav-link" href="#">로그인</a>
 	          	</li>
 	        	<%
-	          	} else {
+	          		} else {
 	        	%>
 	          	<!-- 로그인 시 -->
 	          	<li class="nav-item dropdown">
@@ -41,7 +41,7 @@
 	            	</ul>
 	          	</li>
 	        	<%
-	          	}
+	          		}
 	        	%>
       		</ul>
    		</div>
