@@ -18,6 +18,7 @@
 </head>
 <body>
 	<jsp:include page="../../layout/header.jsp" />
+	
 	<%-- [Contents] ######################################################### --%>
 
 	<main>

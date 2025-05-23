@@ -5,7 +5,9 @@
 <footer class="text-light border-top">
 	<div class="footer-con d-flex justify-content-between align-items-center px-5">
 	    <!-- 로고 -->
-	    <img src="<%= root %>/static/img/logo.png" alt="할건해야짐" class="footer-logo" style="width: 80px; height: 80px;">
+	    <a href="<%= root %>/admin">
+	    	<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" class="footer-logo" style="width: 80px; height: 80px;">
+	    </a>
 	    <!-- 메뉴 -->
 	    <ul class="footer-menu d-flex list-unstyled gap-5 mb-0 fs-6 fw-semibold">
 	      <li><a href="<%= root %>/admin/memberlist" class="text-light text-decoration-none footer-link">회원관리</a></li>

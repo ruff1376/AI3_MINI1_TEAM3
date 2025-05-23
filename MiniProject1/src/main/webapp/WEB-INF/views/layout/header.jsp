@@ -21,14 +21,14 @@
       		<!-- 오른쪽 로그인/로그아웃 -->
       		<ul class="navbar-nav-login mb-lg-0 d-flex align-items-center">
 	        	<%
-	          	if (loginId == null || loginId.equals("")) {
+	          		if (loginId == null || loginId.equals("")) {
 	        	%>
 	          	<!-- 비로그인 시 -->
 	          	<li class="nav-item">
 	            	<a class="nav-link" href="#">로그인</a>
 	          	</li>
 	        	<%
-	          	} else {
+	          		} else {
 	        	%>
 	          	<!-- 로그인 시 -->
 	          	<li class="nav-item dropdown">
@@ -41,7 +41,7 @@
 	            	</ul>
 	          	</li>
 	        	<%
-	          	}
+	          		}
 	        	%>
       		</ul>
    		</div>
