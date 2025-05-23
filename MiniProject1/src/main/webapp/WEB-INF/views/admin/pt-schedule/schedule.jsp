@@ -5,9 +5,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  	<meta charset="UTF-8">
-  	<title>트레이너 시간표 - 최종본</title>
-  	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
+  <meta charset="UTF-8">
+  <title>트레이너 시간표 - 최종본</title>
+  <jsp:include page="/WEB-INF/views/layout/link.jsp" />
+
+  <!-- ✅ Choices.js CSS 추가 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
@@ -23,7 +26,7 @@
 			</h3>
 
 			<!-- ✅ action="schedule" 으로 수정 -->
-			<form action="schedule" method="post">
+			<form action="${pageContext.request.contextPath}/schedule" method="post">
 				<input type="hidden" name="date" id="selected-date-value" value="${selectedDate}">
 
 				<div class="text-end mb-3">
@@ -36,7 +39,7 @@
 							<tr>
 								<th style="width: 110px;">시간</th>
 								<c:forEach var="t" items="${trainerList}">
-									<th>${t}</th>
+									<th>${t.name}</th> <!-- ✅ 트레이너 이름 출력 -->
 								</c:forEach>
 							</tr>
 						</thead>
@@ -54,23 +57,33 @@
 <!-- JSTL → JS 데이터로 변환 -->
 <script>
   const initialSelectedDate = "${selectedDate}";
+
   const trainers = [
     <c:forEach var="t" items="${trainerList}" varStatus="loop">
-      "${t}"<c:if test="${!loop.last}">,</c:if>
+      { id: ${t.trainerId}, name: "${t.name}" }<c:if test="${!loop.last}">,</c:if>
+    </c:forEach>
+  ];
+
+  const memberList = [
+    <c:forEach var="m" items="${memberList}" varStatus="loop">
+      { no: ${m.memberNo}, name: "${m.name}", phone: "${m.phone}" }<c:if test="${!loop.last}">,</c:if>
     </c:forEach>
   ];
 
   const savedEntries = [
-    <c:forEach var="entry" items="${scheduleList}" varStatus="loop">
+    <c:forEach var="e" items="${savedList}" varStatus="loop">
       {
-        "trainer": "${entry.trainer}",
-        "time": "${entry.time}",
-        "memo": "${fn:replace(entry.memo, '\"', '\\\"')}",
-        "checked": ${entry.checked}
+        trainerId: ${e.trainerId},
+        memberNo: ${e.memberNo},
+        bookDate: "${e.bookDate}",
+        bookTime: "${e.bookTime}",
+        note: "${fn:escapeXml(e.note)}"
       }<c:if test="${!loop.last}">,</c:if>
     </c:forEach>
   ];
 </script>
 <script src="static/js/schedule.js"></script>
+<!-- ✅ Choices.js JS 추가 -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </body>
 </html>

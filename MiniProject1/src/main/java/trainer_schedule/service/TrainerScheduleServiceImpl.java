@@ -2,28 +2,29 @@ package trainer_schedule.service;
 
 import java.util.List;
 
-import trainer_schedule.dao.TrainerScheduleDAO;
-import trainer_schedule.dto.TrainerScheduleDTO;
+import trainer_schedule.dao.PTScheduleDAO;
+import trainer_schedule.dto.PTScheduleDTO;
 
 public class TrainerScheduleServiceImpl implements TrainerScheduleService {
-    private TrainerScheduleDAO dao = new TrainerScheduleDAO();
+    private PTScheduleDAO dao = new PTScheduleDAO();
 
     @Override
-    public List<TrainerScheduleDTO> getScheduleByDate(String date) {
+    public List<PTScheduleDTO> getScheduleByDate(String date) {
         return dao.getScheduleByDate(date);
     }
 
     @Override
-    public void saveAll(List<TrainerScheduleDTO> saveList, List<TrainerScheduleDTO> deleteList) {
+    public void saveAll(List<PTScheduleDTO> saveList) {
         try {
-            for (TrainerScheduleDTO dto : saveList) {
-                dao.save(dto);
-            }
-            for (TrainerScheduleDTO dto : deleteList) {
-                dao.delete(dto.getScheduleDate(), dto.getTrainer(), dto.getTime());
+            if (!saveList.isEmpty()) {
+                String date = saveList.get(0).getBookDate();
+                dao.deleteByDate(date);
+                for (PTScheduleDTO dto : saveList) {
+                    dao.insert(dto);
+                }
             }
         } catch (Exception e) {
-            e.printStackTrace(); // 또는 로깅
+            e.printStackTrace(); // 혹은 로깅 처리
         }
     }
 }

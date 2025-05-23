@@ -1,15 +1,12 @@
+// ✅ 전역 변수 설정
 const calendar = document.getElementById("calendar");
 const selectedDateTitle = document.getElementById("selected-date-title");
 const scheduleBody = document.getElementById("schedule-body");
 const baseHours = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
 
-// trainers는 JSP에서 서버에서 받아서 script로 주입해야 함
-// 예: <script> const trainers = ["김계란", "손흥민"]; </script>
-
 function pad(n) {
   return n < 10 ? '0' + n : n;
 }
-
 
 function renderCalendar(date = new Date()) {
   calendar.innerHTML = "";
@@ -65,13 +62,12 @@ function renderCalendar(date = new Date()) {
       cell.classList.add("today", "border", "border-success");
     }
 
-    if (typeof initialSelectedDate !== "undefined" && initialSelectedDate === dateStr) {
+    if (selectedDate === dateStr) {
       cell.classList.add("selected", "bg-success", "text-white", "fw-bold");
     }
 
     cell.addEventListener("click", () => {
-		window.location.href = `schedule?date=${dateStr}`; // ✅ 서블릿으로 이동
-
+      window.location.href = `schedule?date=${dateStr}`;
     });
 
     grid.appendChild(cell);
@@ -83,14 +79,12 @@ function renderCalendar(date = new Date()) {
 function renderSchedule() {
   scheduleBody.innerHTML = "";
   baseHours.forEach(hour => {
-    const [h, m] = hour.split(":"), baseTime = new Date(0, 0, 0, +h, +m);
+    const [h, m] = hour.split(":");
+    const baseTime = new Date(0, 0, 0, +h, +m);
+
     for (let i = 0; i < 2; i++) {
       const time = new Date(baseTime.getTime() + i * 30 * 60000);
-      const nextTime = new Date(time.getTime() + 30 * 60000);
       const timeStr = time.toTimeString().substring(0, 5);
-      const nextStr = nextTime.toTimeString().substring(0, 5);
-      const fullTimeRange = `${timeStr}~${nextStr}`;
-
       const tr = document.createElement("tr");
 
       if (i === 0) {
@@ -103,49 +97,119 @@ function renderSchedule() {
 
       trainers.forEach(trainer => {
         const td = document.createElement("td");
-        const wrapper = document.createElement("div");
-        wrapper.className = "cell-wrapper";
+        td.dataset.time = timeStr;
+        td.dataset.trainerId = trainer.id;
 
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.className = "cell-checkbox d-none";
+        const label = document.createElement("div");
+        label.className = "selected-name";
+        label.textContent = "";
 
-        const input = document.createElement("input");
-        input.type = "text";
-        input.className = "cell-input";
-        input.placeholder = "";
-        input.disabled = true;
+		const matched = savedEntries.find(e =>
+		  String(e.trainerId) === String(trainer.id) &&
+		  e.bookTime.substring(0, 5) === timeStr
+		);
+        if (matched) {
+          td.classList.add("selected-time");
+          const member = memberList.find(m => m.no === matched.memberNo);
+          if (member) {
+            label.textContent = member.name;
+            td.appendChild(label);
 
-        td.dataset.time = fullTimeRange;
-        td.dataset.trainer = trainer;
-
-        if (typeof savedEntries !== "undefined" && Array.isArray(savedEntries)) {
-          const matched = savedEntries.find(e => e.trainer === trainer && e.time === fullTimeRange);
-          if (matched) {
-            if (matched.checked === true || matched.checked === "true") {
-              td.classList.add("selected-time");
-              checkbox.checked = true;
-              input.disabled = false;
-            }
-            input.value = matched.memo || "";
+            const hiddenInputs = [
+              { key: "trainerId", value: trainer.id },
+              { key: "memberNo", value: member.no },
+              { key: "bookDate", value: selectedDate },
+              { key: "bookTime", value: timeStr },
+              { key: "note", value: matched.note || "" }
+            ];
+            hiddenInputs.forEach(({ key, value }) => {
+              const input = document.createElement("input");
+              input.type = "hidden";
+              input.classList.add("entry-hidden");
+              input.dataset.key = key;
+              input.value = value;
+              td.appendChild(input);
+            });
           }
         }
 
-        // ✅ 셀(td) 클릭 시 체크/해제 되도록 td에 직접 이벤트 설정
-        td.addEventListener("click", (e) => {
-          // input 클릭은 제외 (focus만 유지)
-          if (e.target === input) return;
+        td.appendChild(label);
 
-          checkbox.checked = !checkbox.checked;
-          td.classList.toggle("selected-time", checkbox.checked);
-          input.disabled = !checkbox.checked;
-          if (checkbox.checked) input.focus();
-          else input.value = "";
+        td.addEventListener("click", () => {
+          if (td.querySelector("select")) return;
+
+          const originalContent = td.innerHTML;
+          td.innerHTML = "";
+
+          const select = document.createElement("select");
+          select.className = "form-select member-select";
+
+          const defaultOption = document.createElement("option");
+          defaultOption.value = "";
+          defaultOption.textContent = "선택하세요";
+          defaultOption.disabled = true;
+          defaultOption.selected = true;
+          select.appendChild(defaultOption);
+
+          memberList.forEach(m => {
+            const option = document.createElement("option");
+            option.value = m.no;
+            option.textContent = `${m.name} (${m.phone})`;
+            select.appendChild(option);
+          });
+
+          select.addEventListener("mousedown", e => e.stopPropagation());
+          select.addEventListener("click", e => e.stopPropagation());
+
+          td.appendChild(select);
+
+          setTimeout(() => {
+            new Choices(select, { searchEnabled: true });
+          }, 0);
+
+          select.addEventListener("change", () => {
+            const selected = memberList.find(m => m.no == select.value);
+            if (selected) {
+              td.innerHTML = "";
+              td.classList.add("selected-time");
+
+              const nameLabel = document.createElement("div");
+              nameLabel.textContent = selected.name;
+              nameLabel.className = "selected-name";
+              td.appendChild(nameLabel);
+
+              const inputs = [
+                { key: "trainerId", value: trainer.id },
+                { key: "memberNo", value: selected.no },
+                { key: "bookDate", value: selectedDate },
+                { key: "bookTime", value: timeStr },
+                { key: "note", value: "" }
+              ];
+              inputs.forEach(({ key, value }) => {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.classList.add("entry-hidden");
+                input.dataset.key = key;
+                input.value = value;
+                td.appendChild(input);
+              });
+
+              document.removeEventListener("click", outsideClickHandler);
+            }
+          });
+
+          function outsideClickHandler(e) {
+            if (!td.contains(e.target)) {
+              td.innerHTML = originalContent;
+              document.removeEventListener("click", outsideClickHandler);
+            }
+          }
+
+          setTimeout(() => {
+            document.addEventListener("click", outsideClickHandler);
+          }, 0);
         });
 
-        wrapper.appendChild(checkbox);
-        wrapper.appendChild(input);
-        td.appendChild(wrapper);
         tr.appendChild(td);
       });
 
@@ -154,53 +218,38 @@ function renderSchedule() {
   });
 }
 
-document.querySelector("form").addEventListener("submit", (e) => {
-  const form = e.target;
-  document.querySelectorAll(".dynamic-entry").forEach(el => el.remove());
-  const cells = document.querySelectorAll("td[data-trainer]");
-  let entryIndex = 0, deleteIndex = 0;
+// ✅ 폼 전송 시 hidden input 정리
+const form = document.querySelector("form");
+form.addEventListener("submit", function () {
+  const allHidden = document.querySelectorAll(".entry-hidden");
+  const entryMap = [];
 
-  cells.forEach(cell => {
-    const trainer = cell.dataset.trainer;
-    const time = cell.dataset.time;
-    const input = cell.querySelector("input[type='text']");
-    const checkbox = cell.querySelector("input[type='checkbox']");
-    const memo = input?.value.trim() || "";
-
-    if (checkbox.checked) {
-      const createHiddenInput = (name, value) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = `entries[${entryIndex}].${name}`;
-        input.value = value;
-        input.classList.add("dynamic-entry");
-        form.appendChild(input);
-      };
-      createHiddenInput("trainer", trainer);
-      createHiddenInput("time", time);
-      createHiddenInput("memo", memo);
-      createHiddenInput("checked", true);
-      entryIndex++;
-    } else {
-      ["trainer", "time"].forEach(key => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = `deleteEntries[${deleteIndex}].${key}`;
-        input.value = cell.dataset[key];
-        input.classList.add("dynamic-entry");
-        form.appendChild(input);
-      });
-      deleteIndex++;
+  allHidden.forEach(input => {
+    const td = input.closest("td");
+    let map = entryMap.find(m => m.td === td);
+    if (!map) {
+      map = { td, data: {} };
+      entryMap.push(map);
     }
+    map.data[input.dataset.key] = input.value;
   });
 
-  const title = document.getElementById("selected-date-title").textContent;
-  const date = title.split(" ")[0];
-  document.getElementById("selected-date-value").value = date;
+  allHidden.forEach(input => input.remove());
+
+  entryMap.forEach((entry, index) => {
+    for (const key in entry.data) {
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = `entries[${index}].${key}`;
+      hidden.value = entry.data[key];
+      form.appendChild(hidden);
+    }
+  });
 });
 
-renderCalendar();
-if (typeof initialSelectedDate !== "undefined" && initialSelectedDate) {
-  selectedDateTitle.textContent = `${initialSelectedDate} 예약 스케줄`;
-  renderSchedule();
-}
+// ✅ 초기 렌더링
+const selectedDate = initialSelectedDate || new Date().toISOString().split("T")[0];
+document.getElementById("selected-date-value").value = selectedDate;
+selectedDateTitle.textContent = `${selectedDate} 예약 스케줄`;
+renderCalendar(new Date(selectedDate));
+renderSchedule();
