@@ -19,7 +19,7 @@ import trainer_schedule.dto.TrainerDTO;
 import trainer_schedule.service.TrainerScheduleService;
 import trainer_schedule.service.TrainerScheduleServiceImpl;
 
-@WebServlet("/schedule")
+@WebServlet("/admin/schedule")
 public class ScheduleServlet extends HttpServlet {
     private final TrainerScheduleService service = new TrainerScheduleServiceImpl();
     private final TrainerDAO trainerDAO = new TrainerDAO();
