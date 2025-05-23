@@ -82,7 +82,7 @@
     </c:forEach>
   ];
 </script>
-<script src="static/js/schedule.js"></script>
+<script src="<%= request.getContextPath() %>/static/js/schedule.js"></script>
 <!-- ✅ Choices.js JS 추가 -->
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </body>
