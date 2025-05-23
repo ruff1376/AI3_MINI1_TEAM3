@@ -26,7 +26,7 @@
 			</h3>
 
 			<!-- ✅ action="schedule" 으로 수정 -->
-			<form action="${pageContext.request.contextPath}/schedule" method="post">
+			<form action="${pageContext.request.contextPath}/admin/schedule" method="post">
 				<input type="hidden" name="date" id="selected-date-value" value="${selectedDate}">
 
 				<div class="text-end mb-3">
