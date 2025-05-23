@@ -26,5 +26,16 @@ function filterMembers() {
 }
 
 function goToDetail(memberNo) {
-	window.location.href = `<%= request.getContextPath() %>/memberlist/info.jsp?id=` + memberNo;
+	fetch(`/MiniProject1/admin/memberlist?id=` + memberNo)
+		.then(res => res.json())
+		.then(data => {
+			document.getElementById("modalMemberNo").textContent = data.memberNo;
+			document.getElementById("modalName").textContent = data.name;
+			document.getElementById("modalPhone").textContent = data.phone;
+			document.getElementById("modalJoinDate").textContent = data.joinDate;
+			document.getElementById("modalPtCount").textContent = `${data.usedCount} / ${data.totalCount}`;
+
+			const modal = new bootstrap.Modal(document.getElementById('memberModal'));
+			modal.show();
+		});
 }
