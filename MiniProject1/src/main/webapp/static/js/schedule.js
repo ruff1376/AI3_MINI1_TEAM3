@@ -2,7 +2,7 @@
 const calendar = document.getElementById("calendar");
 const selectedDateTitle = document.getElementById("selected-date-title");
 const scheduleBody = document.getElementById("schedule-body");
-const baseHours = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
+const baseHours = ["09:00", "10:00","11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
 
 function pad(n) {
   return n < 10 ? '0' + n : n;
@@ -82,7 +82,7 @@ function renderSchedule() {
     const [h, m] = hour.split(":");
     const baseTime = new Date(0, 0, 0, +h, +m);
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 1; i++) {
       const time = new Date(baseTime.getTime() + i * 30 * 60000);
       const timeStr = time.toTimeString().substring(0, 5);
       const tr = document.createElement("tr");
@@ -90,7 +90,7 @@ function renderSchedule() {
       if (i === 0) {
         const timeCell = document.createElement("td");
         timeCell.textContent = hour;
-        timeCell.rowSpan = 2;
+        timeCell.rowSpan = 1;
         timeCell.className = "time-cell";
         tr.appendChild(timeCell);
       }
@@ -164,7 +164,12 @@ function renderSchedule() {
           td.appendChild(select);
 
           setTimeout(() => {
-            new Choices(select, { searchEnabled: true });
+            new Choices(select, { 
+				searchEnabled: true, 
+				placeholder: true,
+				placeholderValue: '',
+				itemSelectText: ''
+			});
           }, 0);
 
           select.addEventListener("change", () => {
@@ -198,12 +203,19 @@ function renderSchedule() {
             }
           });
 
-          function outsideClickHandler(e) {
-            if (!td.contains(e.target)) {
-              td.innerHTML = originalContent;
-              document.removeEventListener("click", outsideClickHandler);
-            }
-          }
+		  function outsideClickHandler(e) {
+		    if (!td.contains(e.target)) {
+		      // ✅ 셀 비우기 (내용 및 클래스 제거)
+		      td.innerHTML = "";
+		      td.classList.remove("selected-time");
+
+		      // ✅ 숨겨진 입력값도 제거 안 하면 submit에 남음
+		      const hiddenInputs = td.querySelectorAll("input.entry-hidden");
+		      hiddenInputs.forEach(input => input.remove());
+
+		      document.removeEventListener("click", outsideClickHandler);
+		    }
+		  }
 
           setTimeout(() => {
             document.addEventListener("click", outsideClickHandler);

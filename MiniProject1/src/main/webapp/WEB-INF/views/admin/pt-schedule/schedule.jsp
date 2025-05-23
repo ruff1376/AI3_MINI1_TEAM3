@@ -16,7 +16,7 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 <main>
 	<div class="container-fluid d-flex gap-3 px-1 my-2">
-		<div class="calendar border rounded p-3 bg-light" id="calendar" style="width: 630px; height: 1000px;"></div>
+		<div class="calendar border rounded p-3 bg-light" id="calendar" style="flex-shrink: 1; flex-basis: 630px; min-width: 300px;"></div>
 		<div class="schedule flex-grow-1 border rounded p-3 bg-light">
 			<h3 id="selected-date-title" class="mb-3 d-flex justify-content-center">
 				<c:choose>

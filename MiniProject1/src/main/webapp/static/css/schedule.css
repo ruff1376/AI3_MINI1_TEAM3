@@ -88,6 +88,7 @@ body {
 
 .schedule {
   flex: 1;
+  flex-shrink: 0;
 }
 .schedule table {
   width: 100%;
