@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table("gym")
+@Table("gym_machine")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class GymMachine {
 	
 	@Pk
-	private int id;
+	private int gymMachineId;
 	private String name;
 	private String brand;
 	private String category;

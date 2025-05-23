@@ -1,15 +1,24 @@
+<%@page import="com.hhg.ptschedule.dto.PTSchedule"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@ include file="../layout/jstl.jsp"%>
 <%@ include file="../layout/common.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	// 오늘 날짜 초기값 설정
-	String selectedDate = request.getParameter("date");
-	if (selectedDate == null) {
-		selectedDate = LocalDate.now().toString();
-	}
-	String trainerId = request.getParameter("trainerId");
+	//URL에서 date 파라미터를 받되, 없으면 오늘 날짜
+	String paramDate = request.getParameter("date");
+	LocalDate date = (paramDate != null) ? LocalDate.parse(paramDate) : LocalDate.now();
+	
+	String formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
+	String prevDate = date.minusDays(1).toString(); // yyyy-MM-dd
+	String nextDate = date.plusDays(1).toString();  // yyyy-MM-dd
+	String compareDate = date.toString(); // yyyy-MM-dd
+	
+	request.setAttribute("compareDate", compareDate);
+    request.setAttribute("formattedDate", formattedDate);
+    
+    String lastTime = "";
 %>
 
 <!DOCTYPE html>
@@ -40,33 +49,37 @@
 			</form>
 	
 			<!-- 날짜 네비게이션 -->
-			<div class="d-flex justify-content-between align-items-center mb-4">
+			<div class="content-box d-flex justify-content-between align-items-center mb-4">
 			  <!-- 왼쪽: 제목 -->
-			  <div class="fw-bold">오늘 일정</div>
+			  <div class="section-title">오늘 일정</div>
 			
-			  <!-- 오른쪽: 날짜 네비게이션 -->
 			  <div class="d-flex align-items-center gap-2">
-			    <a href="?trainerId=${trainerId}&date=${prevDate}" class="btn btn-sm btn-outline-secondary px-2">&lt;</a>
-			    <span class="fw-bold"><fmt:formatDate value="${selectedDate}" pattern="yyyy.MM.dd" /></span>
-			    <a href="?trainerId=${trainerId}&date=${nextDate}" class="btn btn-sm btn-outline-secondary px-2">&gt;</a>
+			    <a href="?trainerId=${param.trainerId}&date=<%= prevDate %>" class="btn btn-sm btn-outline-secondary px-2">&lt;</a>
+			
+			    <!-- 날짜 텍스트 & 숨겨진 input[type=date] -->
+			    <form method="get" class="m-0 p-0">
+			      <input type="hidden" name="trainerId" value="${param.trainerId}">
+			      <label class="date-display" onclick="document.getElementById('datePicker').click()">
+			        <%= formattedDate %>
+			      </label>
+			      <input type="date" name="date" id="datePicker" onchange="this.form.submit()" value="<%= date.toString() %>">
+			    </form>
+			
+			    <a href="?trainerId=${param.trainerId}&date=<%= nextDate %>" class="btn btn-sm btn-outline-secondary px-2">&gt;</a>
 			  </div>
 			</div>
 	
 			<!-- 오늘 일정 -->
 			<div class="content-box">
 				<c:forEach var="pt" items="${ptScheduleList}">
-					<c:if
-						test="${pt.trainerId == trainerId && pt.bookDate == selectedDate}">
+					<c:if test="${pt.trainerId == param.trainerId && pt.bookDate == compareDate}">
 						<div class="d-flex justify-content-between rounded-row">
-							<div>${pt.bookTime}</div>
-							<div>
-								<c:forEach var="m" items="${memberList}">
-									<c:if test="${m.memberNo == pt.memberNo}">${m.name} PT</c:if>
-								</c:forEach>
-							</div>
-						</div>
+					      <div>${pt.bookTime}</div>
+					      <div>${pt.memberName} PT</div>
+					    </div>
 					</c:if>
 				</c:forEach>
+				
 			</div>
 	
 			<!-- TODO -->
@@ -104,7 +117,7 @@
 			<div class="content-box mb-5">
 				<div class="section-title">식단 평가</div>
 				<c:forEach var="macro" items="${macroRecordList}">
-					<c:if test="${macro.recordDate == selectedDate}">
+					<c:if test="${macro.recordDate == formattedDate}">
 						<c:forEach var="pt" items="${ptScheduleList}">
 							<c:if
 								test="${pt.trainerId == trainerId && pt.memberNo == macro.memberNo}">
