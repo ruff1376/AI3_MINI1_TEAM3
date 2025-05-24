@@ -60,12 +60,6 @@ public class SalesServlet extends HttpServlet {
 		}
 		
 		if( path.equals("/list") || path.equals("/list.jsp") ) {
-//			List<Sales> trainerSalesList = service.findAll();
-//			for (Sales sales : trainerSalesList) {
-//				System.out.println(sales);
-//			}
-//			
-//			request.setAttribute("list", trainerSalesList);
 			
 			List<Trainer> trainerList = trainerService.listWithSales();
 			request.setAttribute("trainerList", trainerList);
@@ -120,10 +114,22 @@ public class SalesServlet extends HttpServlet {
 			  				  .amount(amount)
 			  				  .note(note)
 			  				  .build();
-			page = "/WEB-INF/views/admin/sales/edit.jsp";
-			RequestDispatcher dispatcher = req.getRequestDispatcher(page);
-			dispatcher.forward(req, res);
+			try {
+				boolean result = service.update(sale);
+				if( result ) {
+					response.sendRedirect(root + "/admin/sales/list?"+trainerid);
+				}
+				// else {
+				// 	response.sendRedirect(root + "/admin/machine/edit.jsp?id=" +id+ "&error=true");
+				// }
+				
+			} catch (Exception e) {
+				
+			}
 		}
+
+
+
 	}
 
 }

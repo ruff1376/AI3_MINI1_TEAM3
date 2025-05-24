@@ -14,9 +14,9 @@
 <body>
 	<div class="container mt-5">
 	    <h2 class="mb-4 text-center">매출 수정</h2>
-	    <form action="update" method="post" class="border p-4 rounded bg-light">
-	        <input type="hidden" name="salesid" value="${sales.sales_id}" />
-	        <input type="hidden" name="trainerid" value="${sales.trainer_id}" />
+	    <form id="form" action="<c:url value='/admin/sales/edit'/>" method="post" class="border p-4 rounded bg-light">
+	        <input type="hidden" name="salesid" value="${sales.salesId}" />
+	        <input type="hidden" name="trainerid" value="${sales.trainerId}" />
 	        <div class="mb-3">
 	            <label class="form-label">트레이너</label>
 	            <select name="trainerid" class="form-select">

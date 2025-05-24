@@ -40,13 +40,14 @@ public class SalesServiceImpl implements SalesService {
 
 	@Override
 	public Sales findById(int salesId) {
+		Sales sales = null;
 		try {
-			return dao.select(salesId);
+			sales = dao.select(salesId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return sales;
 	}
 
 	@Override
