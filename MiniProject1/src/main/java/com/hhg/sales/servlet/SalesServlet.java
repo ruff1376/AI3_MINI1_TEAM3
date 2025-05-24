@@ -104,7 +104,7 @@ public class SalesServlet extends HttpServlet {
 	    }
 		
 		if( path.equals("/edit") || path.equals("/edit.jsp") ) {
-			int result = 0;
+
 			int trainerid = Integer.parseInt(req.getParameter("trainerid"));
 	        int amount = Integer.parseInt(req.getParameter("amount"));
 	        String note = req.getParameter("note");
@@ -117,16 +117,17 @@ public class SalesServlet extends HttpServlet {
 			try {
 				boolean result = service.update(sale);
 				if( result ) {
-					response.sendRedirect(root + "/admin/sales/list?"+trainerid);
+					response.sendRedirect(root + "/admin/sales/list");
 				}
-				// else {
-				// 	response.sendRedirect(root + "/admin/machine/edit.jsp?id=" +id+ "&error=true");
-				// }
+				else {
+					response.sendRedirect(root + "/admin/sales/list&error=true");
+				}
 				
 			} catch (Exception e) {
 				
 			}
 		}
+
 
 
 
