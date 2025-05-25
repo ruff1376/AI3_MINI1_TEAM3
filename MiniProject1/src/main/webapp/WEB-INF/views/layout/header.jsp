@@ -14,8 +14,8 @@
    			<ul class="navbar-nav mb-2 mb-lg-0">
 	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/memberlist">회원관리</a></li>
 	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/schedule">예약관리</a></li>
-	        	<li class="nav-item"><a class="nav-link" href="#">기구현황</a></li>
-	        	<li class="nav-item"><a class="nav-link" href="#">매출현황</a></li>
+	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/machine">기구현황</a></li>
+	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/sales">매출현황</a></li>
 		        <li class="nav-item"><a class="nav-link" href="#">문의사항</a></li>
 	      	</ul>
       		<!-- 오른쪽 로그인/로그아웃 -->
