@@ -18,7 +18,7 @@
 	    </ul>
 	</div>
 
-	<div class="text-end border-top py-2 small text-muted pe-5">
+	<div class="text-end py-2 small text-light pe-5">
 	 	&copy; 2025 할건해야짐. All rights reserved.
 	</div>
 </footer>

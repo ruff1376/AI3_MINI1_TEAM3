@@ -1,27 +1,20 @@
 package trainer_schedule.dto;
 
+import com.alohaclass.jdbc.annotation.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table("member")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MemberScheduleDTO {
     private int memberNo;
     private String name;
     private String phone;
-
-    public int getMemberNo() {
-        return memberNo;
-    }
-    public void setMemberNo(int memberNo) {
-        this.memberNo = memberNo;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
 

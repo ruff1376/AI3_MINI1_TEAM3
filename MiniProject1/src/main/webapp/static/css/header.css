@@ -1,0 +1,44 @@
+@charset "UTF-8";
+li {list-style: none;}
+
+/* header */
+.navbar {
+  background-color: #2D3E50 !important;
+}
+
+.navbar-brand img {
+  height: 80px;
+}
+
+.member-select {
+  z-index: 1000;
+  position: relative;
+}
+.navbar-nav {
+  gap: 80px;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+.navbar-nav-login {
+  gap: 60px;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-nav-login .nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #2ecc71;
+}
+.navbar-nav-login .nav-link:hover {
+  color: #2ecc71;
+}
+
+
