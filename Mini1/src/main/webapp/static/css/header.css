@@ -16,8 +16,8 @@ li {list-style: none;}
   position: relative;
 }
 .navbar-nav {
-  gap: 80px;
-  margin: auto;
+  gap: 30px;
+  margin-left: auto;
   font-size: 18px;
   font-weight: 500;
 }
@@ -29,6 +29,7 @@ li {list-style: none;}
 }
 
 .navbar-nav .nav-link {
+
   color: white;
 }
 .navbar-nav-login .nav-link {
@@ -41,5 +42,8 @@ li {list-style: none;}
 .navbar-nav-login .nav-link:hover {
   color: #2ecc71;
 }
+
+
+
 
 

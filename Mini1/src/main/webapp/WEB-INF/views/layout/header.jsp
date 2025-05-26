@@ -11,14 +11,13 @@
    		<!-- 메뉴 -->
     	<div class="collapse navbar-collapse" id="navbarMain">
       	<!-- 왼쪽 메뉴 -->
-   			<ul class="navbar-nav mb-2 mb-lg-0">
-	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/memberlist">회원관리</a></li>
-		        <li class="nav-item"><a class="nav-link" href="#">식단관리</a></li>
-	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/schedule">예약관리</a></li>
-	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/machine">기구현황</a></li>
-	        	<li class="nav-item"><a class="nav-link" href="<%= root %>/admin/sales">매출현황</a></li>
-		        <li class="nav-item"><a class="nav-link" href="#">문의사항</a></li>
-	      	</ul>
+   			<ul class="navbar-nav mb-2 mb-lg-0 line">
+			  <li class="nav-item"><a class="nav-link" href="<%= root %>/admin/memberlist">회원관리</a></li>
+			  <li class="nav-item"><a class="nav-link" href="<%= root %>/admin/schedule">예약관리</a></li>
+			  <li class="nav-item"><a class="nav-link" href="<%= root %>/admin/machine">기구현황</a></li>
+			  <li class="nav-item"><a class="nav-link" href="<%= root %>/admin/sales">매출현황</a></li>
+			  <li class="nav-item"><a class="nav-link" href="#">문의사항</a></li>
+			</ul>
 	      	
       		<!-- 오른쪽 로그인/로그아웃 -->
 <!--       		<ul class="navbar-nav-login mb-lg-0 d-flex align-items-center"> -->
