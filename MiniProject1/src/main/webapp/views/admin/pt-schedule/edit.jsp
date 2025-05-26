@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 <%-- [Contents] ######################################################### --%>
 <body>
-	<div class="container mt-5">
+	<div class="container mt-5 mb-5">
 	    <h2 class="mb-4 text-center">매출 수정</h2>
 	    <form id="form" action="<c:url value='/admin/sales/edit'/>" method="post" class="border p-4 rounded bg-light">
 	        <input type="hidden" name="salesid" value="${sales.salesId}" />
