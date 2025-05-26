@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/layout/common.jsp" %>
+<%@ include file="common.jsp" %>
 
 <nav class="navbar navbar-expand-lg px-5 py-0">
 	<div class="container-fluid">
