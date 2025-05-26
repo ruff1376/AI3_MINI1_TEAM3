@@ -14,7 +14,7 @@
 	
 <div class="container mt-5 mb-5">
   <div class="card shadow-lg">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header bg-secondary text-white">
       <h4 class="mb-0">운동기구 등록</h4>
     </div>
     <div class="card-body">
@@ -46,7 +46,8 @@
         </div>
         
         <div class="d-grid">
-          <button type="submit" class="btn btn-success btn-lg">등록</button>
+          <button type="submit" class="btn btn-success mb-1">등록</button>
+          <a href="list" class="btn btn-secondary">취소</a>
         </div>
       </form>
     </div>

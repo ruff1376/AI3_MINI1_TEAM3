@@ -16,14 +16,24 @@
 	    <h2 class="mb-4 text-center">매출 수정</h2>
 	    <form id="form" action="<c:url value='/admin/sales/edit'/>" method="post" class="border p-4 rounded bg-light">
 	        <input type="hidden" name="salesid" value="${sales.salesId}" />
-	        <input type="hidden" name="trainerid" value="${sales.trainerId}" />
+<%-- 	        <input type="hidden" name="trainerid" value="${sales.trainerId}" /> --%>
 	        <div class="mb-3">
 	            <label class="form-label">트레이너</label>
 	            <select name="trainerid" class="form-select">
+                    <option>트레이너 선택</option>
 	                <c:forEach var="trainer" items="${trainerList}">
-	                    <option value="${trainer.trainerId}">${trainer.name}</option>
-	                </c:forEach>
+	                	<c:if test="${ trainer.trainerId == sales.trainerId }">
+	                		<option value="${trainer.trainerId}" selected>${trainer.name}</option>	
+	                	</c:if>
+	                	<c:if test="${ trainer.trainerId != sales.trainerId }">
+	           				<option value="${trainer.trainerId}">${trainer.name}</option>
+	                	</c:if>
+                	</c:forEach>
 	            </select>
+	        </div>
+	        <div class="mb-3">
+	            <label class="form-label">매출번호</label>
+	            <input type="number" name="salesid" class="form-control" value="${sales.salesId}" readonly />
 	        </div>
 	        <div class="mb-3">
 	            <label class="form-label">금액</label>
@@ -34,8 +44,13 @@
 	            <input type="text" name="note" class="form-control" value="${sales.note}" />
 	        </div>
 	        <div class="d-flex justify-content-between">
-	            <button type="submit" class="btn btn-primary">수정</button>
-	            <a href="list" class="btn btn-secondary">취소</a>
+		        <div class="d-flex">
+		            <button type="submit" class="btn btn-primary">수정</button>
+		            <button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
+		        </div>
+		        <div>
+		            <a href="list" class="btn btn-secondary">취소</a>
+		        </div>
 	        </div>
 	    </form>
 	</div>
@@ -43,6 +58,17 @@
 <%-- [Contents] ######################################################### --%>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 <jsp:include page="/WEB-INF/views/layout/script.jsp" />
+<script type="text/javascript">
+		const root = "${ root }"
+		const form = $('#form')
+		function remove() {
+			const check = confirm("정말로 삭제하시겠습니까?") 
+			if( !check ) return
+			const url = root + "/admin/sales/delete"
+			form.attr("action", url)
+			form.submit()
+		}
+</script>
 	
 
 </body>

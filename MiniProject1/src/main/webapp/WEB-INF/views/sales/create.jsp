@@ -34,7 +34,8 @@
 	            <label class="form-label">비고</label>
 	            <input type="text" name="note" class="form-control" />
 	        </div>
-	        <button type="submit" class="btn btn-success w-100">등록</button>
+	        <button type="submit" class="btn btn-success w-100 mb-1">등록</button>
+	        <a href="list" class="btn btn-secondary w-100">취소</a>
 	    </form>
 	</div>
 	

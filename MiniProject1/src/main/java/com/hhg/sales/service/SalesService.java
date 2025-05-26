@@ -16,4 +16,7 @@ public interface SalesService {
 	List<Sales> findByTrainerId(int trainerId);
 	// 전체 매출 조회
 	List<Sales> findAll();
+	
+	// 매출 삭제
+	boolean delete(int no);
 }
