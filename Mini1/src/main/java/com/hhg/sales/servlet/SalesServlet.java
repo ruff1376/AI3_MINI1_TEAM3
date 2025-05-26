@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hhg.admin.dto.Trainer;
 import com.hhg.admin.service.TrainerService;
 import com.hhg.admin.service.TrainerServiceImpl;
@@ -34,13 +35,13 @@ public class SalesServlet extends HttpServlet {
 		String root = request.getContextPath();
 		String path = request.getPathInfo();
 		String page = "";
-		if (path == null || path.equals("/")) {
+		if (path == null || path.equals("")) {
             List<Trainer> trainerList = trainerService.listWithSales();
             request.setAttribute("trainerList", trainerList);
-
-            page = "/WEB-INF/views/admin/sales/sales.jsp";
+            page = "/WEB-INF/views/admin/sales/index.jsp";
             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
             dispatcher.forward(request, response);
+            return;
         }
 		
 		if( path.equals("/create") || path.equals("/create.jsp") ) {
@@ -49,6 +50,7 @@ public class SalesServlet extends HttpServlet {
 			page = "/WEB-INF/views/admin/sales/create.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			return;
 		}
 		
 		if( path.equals("/list") || path.equals("/list.jsp") ) {
@@ -59,6 +61,7 @@ public class SalesServlet extends HttpServlet {
 			page = "/WEB-INF/views/admin/sales/list.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			return;
 		}
 		
 		if( path.equals("/edit") || path.equals("/edit.jsp") ) {
@@ -71,7 +74,21 @@ public class SalesServlet extends HttpServlet {
 			page = "/WEB-INF/views/admin/sales/edit.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			return;
 		}
+		
+		// [비동기] 트레이너 리스트 (JSON)
+		if( path.equals("/list.json") ) {
+			List<Trainer> trainerList = trainerService.listWithSales();
+			request.setAttribute("trainerList", trainerList);
+			response.setContentType("application/json; charset=UTF-8");
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(trainerList);
+			response.getWriter().write(json);
+			return;
+		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
