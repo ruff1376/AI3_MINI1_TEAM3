@@ -32,8 +32,8 @@
         </thead>
         <tbody>
             <c:forEach var="machine" items="${list}">
-                <tr onclick="location.href='edit?id=${machine.id}'" style="cursor:pointer;">
-                    <td>${machine.id}</td>
+                <tr onclick="location.href='edit?id=${machine.gymMachineId}'" style="cursor:pointer;">
+                    <td>${machine.gymMachineId}</td>
                     <td>${machine.brand}</td>
                     <td>${machine.name}</td>
                     <td>${machine.status}</td>
