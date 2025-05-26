@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class GymMachine {
 	
 	@Pk
-	private int gymMachineId;
+	private int id;
 	private String name;
 	private String brand;
 	private String category;
