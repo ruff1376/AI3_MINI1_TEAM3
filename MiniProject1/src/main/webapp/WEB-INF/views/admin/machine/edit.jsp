@@ -15,10 +15,10 @@
 <div class="container mt-5 mb-5">
   <h2>기구 정보 수정</h2>
   <form id="form" action="<c:url value='/admin/machine/edit'/>" method="post">
-    <input type="hidden" name="id" value="${machine.id}" />
+    <input type="hidden" name="id" value="${machine.gymMachineId}" />
     <div class="mb-3">
       <label class="form-label">장비 번호</label>
-      <input type="text" name="id" value="${machine.id}" class="form-control" readonly />
+      <input type="text" name="id" value="${machine.gymMachineId}" class="form-control" readonly />
     </div>
     <div class="mb-3">
       <label class="form-label">기구명</label>
