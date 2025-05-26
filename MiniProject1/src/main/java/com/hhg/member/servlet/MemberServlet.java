@@ -22,10 +22,10 @@ public class MemberServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = "";
-		int id = Integer.parseInt(request.getParameter("id"));
+//		int id = Integer.parseInt(request.getParameter("id"));
 
-		Member member = memberService.read(id);
-		PTHistory pt = ptHistoryService.findByMemberId(id); // usedCount, totalCount 포함된 객체
+//		Member member = memberService.read(id);
+//		PTHistory pt = ptHistoryService.findByMemberId(id); // usedCount, totalCount 포함된 객체
 		
 		List<Member> memberList = memberService.list();
 		request.setAttribute("memberList", memberList);
