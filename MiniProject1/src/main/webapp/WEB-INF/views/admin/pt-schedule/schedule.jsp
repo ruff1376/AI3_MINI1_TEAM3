@@ -7,7 +7,8 @@
 <head>
   <meta charset="UTF-8">
   <title>트레이너 시간표 - 최종본</title>
-  <jsp:include page="/WEB-INF/views/layout/link.jsp" />
+  <%@ include file="/WEB-INF/views/layout/link.jsp" %>
+  <link rel="stylesheet" href="<%= root %>/static/css/schedule.css">
 
   <!-- ✅ Choices.js CSS 추가 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
@@ -23,7 +24,7 @@
 					<c:when test="${empty selectedDate}">날짜를 선택하세요</c:when>
 					<c:otherwise>${selectedDate} 예약 스케줄</c:otherwise>
 				</c:choose>
-			</h3>
+			</h3>	
 
 			<!-- ✅ action="schedule" 으로 수정 -->
 			<form action="${pageContext.request.contextPath}/admin/schedule" method="post">
