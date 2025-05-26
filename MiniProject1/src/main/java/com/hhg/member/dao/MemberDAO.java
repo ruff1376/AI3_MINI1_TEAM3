@@ -12,7 +12,7 @@ public class MemberDAO extends BaseDAOImpl<Member> {
 		Member member = null;
 		try {
 			Map<String, Object> map = new HashMap<>();
-			map.put("no", no);
+			map.put("member_no", no);
 			member = selectBy(map);
 		} catch (Exception e) {
 			e.printStackTrace();

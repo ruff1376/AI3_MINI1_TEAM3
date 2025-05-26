@@ -26,7 +26,7 @@ function filterMembers() {
 }
 
 function goToDetail(memberNo) {
-	fetch(`/MiniProject1/admin/memberlist?id=` + memberNo)
+	fetch(`/MiniProject1/admin/memberlist?id=${memberNo}`)
 		.then(res => res.json())
 		.then(data => {
 			document.getElementById("modalMemberNo").textContent = data.memberNo;
