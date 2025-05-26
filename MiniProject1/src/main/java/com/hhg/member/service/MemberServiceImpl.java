@@ -28,11 +28,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member selectById(int no) {
+	public Member selectById(String id) {
 		Member member = null;
 		try {
-			Map<Object, Object> map = new HashMap<>();
-			map.put("no", no);
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", id);
 			member = memberDAO.selectBy(map);
 		} catch (Exception e) {
 			e.printStackTrace();
