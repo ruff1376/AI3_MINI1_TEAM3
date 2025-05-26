@@ -38,7 +38,7 @@ public class SalesServlet extends HttpServlet {
             List<Trainer> trainerList = trainerService.listWithSales();
             request.setAttribute("trainerList", trainerList);
 
-            page = "/WEB-INF/views/admin/sales.jsp";
+            page = "/WEB-INF/views/admin/sales/sales.jsp";
             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
             dispatcher.forward(request, response);
         }
