@@ -13,9 +13,9 @@
   <!-- ✅ Choices.js CSS 추가 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
-<main>
+<main class="flex-grow-1 d-flex align-items-center">
 	<div class="container-fluid d-flex gap-3 px-1 my-2">
 		<div class="calendar border rounded p-3 bg-light" id="calendar" style="flex-shrink: 1; flex-basis: 630px; min-width: 300px;"></div>
 		<div class="schedule flex-grow-1 border rounded p-3 bg-light">
