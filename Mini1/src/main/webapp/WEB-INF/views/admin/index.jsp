@@ -102,7 +102,7 @@
 					<c:if test="${q.status == 0}">
 						<c:forEach var="pt" items="${ptScheduleList}">
 							<c:if
-								test="${pt.trainerId == trainerId && pt.memberNo == q.writer}">
+								test="${pt.trainerId == param.trainerId && pt.memberNo == q.writer}">
 								<div class="d-flex justify-content-between rounded-row">
 									<div>${q.writer}</div>
 									<div>${q.title}</div>
@@ -117,10 +117,10 @@
 			<div class="content-box mb-5">
 				<div class="section-title">식단 평가</div>
 				<c:forEach var="macro" items="${macroRecordList}">
-					<c:if test="${macro.recordDate == formattedDate}">
+					<c:if test="${macro.recordDate == compareDate}">
 						<c:forEach var="pt" items="${ptScheduleList}">
 							<c:if
-								test="${pt.trainerId == trainerId && pt.memberNo == macro.memberNo}">
+								test="${pt.trainerId == param.trainerId && pt.memberNo == macro.memberNo}">
 								<c:forEach var="m" items="${memberList}">
 									<c:if test="${m.memberNo == macro.memberNo}">
 										<div class="d-flex justify-content-between rounded-row">
