@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.alohaclass.jdbc.dao.BaseDAOImpl;
 import com.hhg.ptschedule.dto.PTSchedule;
+import com.hhg.util.DBUtil;
 
 public class PTScheduleDAO extends BaseDAOImpl<PTSchedule> {
 	
