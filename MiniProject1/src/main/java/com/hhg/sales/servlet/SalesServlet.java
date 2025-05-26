@@ -96,12 +96,17 @@ public class SalesServlet extends HttpServlet {
 	    }
 		
 		if( path.equals("/edit") || path.equals("/edit.jsp") ) {
-
+			int salesid = Integer.parseInt(req.getParameter("salesid"));
 			int trainerid = Integer.parseInt(req.getParameter("trainerid"));
 	        int amount = Integer.parseInt(req.getParameter("amount"));
 	        String note = req.getParameter("note");
-	        
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
 	        Sales sale = Sales.builder()
+	        				  .salesId(salesid)
 			  				  .trainerId(trainerid)
 			  				  .amount(amount)
 			  				  .note(note)
@@ -117,6 +122,16 @@ public class SalesServlet extends HttpServlet {
 				
 			} catch (Exception e) {
 				
+			}
+		}
+		if( path.equals("/delete") || path.equals("/delete.jsp") ) {
+			int salesid = Integer.parseInt(req.getParameter("salesid"));
+			boolean result = service.delete(salesid);
+			if( result ) {
+				res.sendRedirect(root + "/admin/sales/list");
+			}
+			else {
+				res.sendRedirect(root + "/admin/sales/list&error=true");
 			}
 		}
 

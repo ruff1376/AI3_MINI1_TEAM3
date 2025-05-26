@@ -46,7 +46,7 @@
     		<a href="<%=request.getContextPath()%>/admin/machine/list?category=${machine.category}" class="btn btn-primary ms-2">목록</a>
     	</div>
     	<div>
-	    	<button type="submit" class="btn btn-primary ms-2">수정</button>
+	    	<button type="submit" class="btn btn-primary ms-2">수정하기</button>
 	    	<button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
     	</div>
     </div>
