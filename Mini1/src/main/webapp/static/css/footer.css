@@ -5,6 +5,11 @@ footer {
 	background-color: #2D3E50 !important;
 }
 
+.footer-container {
+	height: 80px;
+}
+
+
 .footer-top {
  	display: flex;
   	align-items: center;
@@ -17,14 +22,14 @@ footer {
 
 .footer-menu {
   display: flex;
-  gap: 80px;
-  padding: 0;
+  gap: 40px;
   list-style: none;
   font-weight: 500;
+  margin: auto;
 }
 
 .footer-menu li a {
-	font-size: 18px;
+	font-size: 13px;
 	padding: 8px;
   	transition: color 0.2s;
 }
@@ -32,3 +37,9 @@ footer {
 .footer-menu li a:hover {
   color: #2ecc71 !important;
 }
+
+#menu-border li:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  padding-right: 40px;
+}
+
