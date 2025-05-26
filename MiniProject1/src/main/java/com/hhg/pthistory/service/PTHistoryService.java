@@ -6,4 +6,5 @@ import com.hhg.pthistory.dto.PTHistory;
 
 public interface PTHistoryService {
 	List<PTHistory> list();
+	PTHistory findByMemberId(int id);
 }
