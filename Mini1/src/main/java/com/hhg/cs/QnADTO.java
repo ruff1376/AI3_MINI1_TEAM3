@@ -3,19 +3,17 @@ package com.hhg.cs;
 public class QnADTO {
     private int id;
     private String title;
-    private String content;
+    private String writer;
+    private String date;
+    private String answer;
 
-    // getter/setter
+    public QnADTO(int id, String title, String writer, String date, String answer) {
+        this.id = id; this.title = title; this.writer = writer; this.date = date; this.answer = answer;
+    }
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
     public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
-	public void setAnswer(String string) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getWriter() { return writer; }
+    public String getDate() { return date; }
+    public String getAnswer() { return answer; }
+    public void setAnswer(String answer) { this.answer = answer; }
 }
