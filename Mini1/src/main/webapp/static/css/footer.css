@@ -2,34 +2,31 @@
 li {list-style: none;}
 
 footer {
- 	background-color: #2D3E50 !important;
+	background-color: #2D3E50 !important;
 }
 
 .footer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+ 	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	padding-left: 50px;
+  	padding-right: 50px;
+  	padding-top: 24px;
+  	padding-bottom: 24px;
 }
-
 
 .footer-menu {
   display: flex;
-  gap: 60px;
+  gap: 80px;
   padding: 0;
-  margin: 0;
   list-style: none;
-  font-size: 16px;
   font-weight: 500;
 }
 
 .footer-menu li a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.2s;
+	font-size: 18px;
+	padding: 8px;
+  	transition: color 0.2s;
 }
 
 .footer-menu li a:hover {

@@ -4,6 +4,7 @@ li {list-style: none;}
 /* header */
 .navbar {
   background-color: #2D3E50 !important;
+  font-family: Arial;
 }
 
 .navbar-brand img {
@@ -16,7 +17,7 @@ li {list-style: none;}
 }
 .navbar-nav {
   gap: 80px;
-  margin-left: auto;
+  margin: auto;
   font-size: 18px;
   font-weight: 500;
 }
