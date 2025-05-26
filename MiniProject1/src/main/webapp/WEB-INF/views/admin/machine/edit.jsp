@@ -15,10 +15,10 @@
 <div class="container mt-5 mb-5">
   <h2>기구 정보 수정</h2>
   <form id="form" action="<c:url value='/admin/machine/edit'/>" method="post">
-    <input type="hidden" name="id" value="${machine.id}" />
+    <input type="hidden" name="id" value="${machine.gymMachineId}" />
     <div class="mb-3">
       <label class="form-label">장비 번호</label>
-      <input type="text" name="id" value="${machine.id}" class="form-control" readonly />
+      <input type="text" name="id" value="${machine.gymMachineId}" class="form-control" readonly />
     </div>
     <div class="mb-3">
       <label class="form-label">기구명</label>
@@ -46,7 +46,7 @@
     		<a href="<%=request.getContextPath()%>/admin/machine/list?category=${machine.category}" class="btn btn-primary ms-2">목록</a>
     	</div>
     	<div>
-	    	<button type="submit" class="btn btn-primary ms-2">수정</button>
+	    	<button type="submit" class="btn btn-primary ms-2">수정하기</button>
 	    	<button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
     	</div>
     </div>

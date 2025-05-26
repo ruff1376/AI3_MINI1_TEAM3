@@ -6,6 +6,9 @@ import java.util.List;
 import com.hhg.member.dto.Member;
 import com.hhg.member.service.MemberService;
 import com.hhg.member.service.MemberServiceImpl;
+import com.hhg.pthistory.dto.PTHistory;
+import com.hhg.pthistory.service.PTHistoryService;
+import com.hhg.pthistory.service.PTHistoryServiceImpl;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -19,6 +22,7 @@ public class MemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private MemberService memberService = new MemberServiceImpl();
+	private PTHistoryService ptHistoryService = new PTHistoryServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = "";

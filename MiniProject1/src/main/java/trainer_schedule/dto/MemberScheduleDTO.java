@@ -1,3 +1,4 @@
+
 package trainer_schedule.dto;
 
 import com.alohaclass.jdbc.annotation.Table;

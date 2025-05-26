@@ -30,7 +30,7 @@ public class SalesServiceImpl implements SalesService {
 	public boolean update(Sales sales) {
 		int result = 0;
 		try {
-			dao.update(sales);
+			result = dao.update(sales);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,6 +74,17 @@ public class SalesServiceImpl implements SalesService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public boolean delete(int no) {
+		int result = 0;
+		try {
+			result = dao.delete(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result > 0;
 	}
 
 

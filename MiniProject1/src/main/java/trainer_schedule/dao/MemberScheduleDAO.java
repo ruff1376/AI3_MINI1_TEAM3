@@ -1,3 +1,4 @@
+
 package trainer_schedule.dao;
 
 import com.alohaclass.jdbc.dao.BaseDAOImpl;

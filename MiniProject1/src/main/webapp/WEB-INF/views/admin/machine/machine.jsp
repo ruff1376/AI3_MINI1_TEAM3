@@ -14,10 +14,10 @@
 <div class="container text-center mt-5 mb-5">
     <h2>운동기구 카테고리</h2>
     <div class="btn-group mt-4" role="group">
-        <a href="list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
-        <a href="list?category=CABLE" class="btn btn-outline-secondary">CABLE</a>
-        <a href="list?category=PLATE" class="btn btn-outline-success">PLATE</a>
-        <a href="list?category=ETC" class="btn btn-outline-danger">ETC</a>
+        <a href="<%= root %>/admin/machine/list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
+        <a href="<%= root %>/admin/machine/list?category=CABLE" class="btn btn-outline-secondary">CABLE</a>
+        <a href="<%= root %>/admin/machine/list?category=PLATE" class="btn btn-outline-success">PLATE</a>
+        <a href="<%= root %>/admin/machine/list?category=ETC" class="btn btn-outline-danger">ETC</a>
     </div>
 </div>
 	

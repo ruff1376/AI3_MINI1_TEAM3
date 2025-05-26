@@ -1,3 +1,4 @@
+
 package trainer_schedule.dao;
 
 import java.util.List;
@@ -12,3 +13,4 @@ public class TrainerDAO extends BaseDAOImpl<TrainerDTO>{
 	return list();
 	}
 }
+

@@ -34,22 +34,14 @@ public class SalesServlet extends HttpServlet {
 		String root = request.getContextPath();
 		String path = request.getPathInfo();
 		String page = "";
-		if( path == null || path.equals("/") ) {
-			String[] ids = request.getParameterValues("trainerid");
-			page = "/WEB-INF/views/admin/sales/sales.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-			dispatcher.forward(request, response);
-			if (ids != null) {
-				for (String id : ids) {
-					int trainerId = Integer.parseInt(id);
-					List<Sales> sales = service.findByTrainerId(trainerId);
-					trainerSalesMap.put(trainerId, sales);
-				}
-			} else {
-				request.setAttribute("salesList", service.findAll());
-			}
-			request.setAttribute("trainerSalesMap", trainerSalesMap);
-		}
+		if (path == null || path.equals("/")) {
+            List<Trainer> trainerList = trainerService.listWithSales();
+            request.setAttribute("trainerList", trainerList);
+
+            page = "/WEB-INF/views/admin/sales.jsp";
+            RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+            dispatcher.forward(request, response);
+        }
 		
 		if( path.equals("/create") || path.equals("/create.jsp") ) {
 			List<Trainer> trainerList = trainerService.list();
@@ -104,12 +96,17 @@ public class SalesServlet extends HttpServlet {
 	    }
 		
 		if( path.equals("/edit") || path.equals("/edit.jsp") ) {
-
+			int salesid = Integer.parseInt(req.getParameter("salesid"));
 			int trainerid = Integer.parseInt(req.getParameter("trainerid"));
 	        int amount = Integer.parseInt(req.getParameter("amount"));
 	        String note = req.getParameter("note");
-	        
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
+	        System.out.println(trainerid);
 	        Sales sale = Sales.builder()
+	        				  .salesId(salesid)
 			  				  .trainerId(trainerid)
 			  				  .amount(amount)
 			  				  .note(note)
@@ -117,14 +114,24 @@ public class SalesServlet extends HttpServlet {
 			try {
 				boolean result = service.update(sale);
 				if( result ) {
-					response.sendRedirect(root + "/admin/sales/list");
+					res.sendRedirect(root + "/admin/sales/list");
 				}
 				else {
-					response.sendRedirect(root + "/admin/sales/list&error=true");
+					res.sendRedirect(root + "/admin/sales/list&error=true");
 				}
 				
 			} catch (Exception e) {
 				
+			}
+		}
+		if( path.equals("/delete") || path.equals("/delete.jsp") ) {
+			int salesid = Integer.parseInt(req.getParameter("salesid"));
+			boolean result = service.delete(salesid);
+			if( result ) {
+				res.sendRedirect(root + "/admin/sales/list");
+			}
+			else {
+				res.sendRedirect(root + "/admin/sales/list&error=true");
 			}
 		}
 
