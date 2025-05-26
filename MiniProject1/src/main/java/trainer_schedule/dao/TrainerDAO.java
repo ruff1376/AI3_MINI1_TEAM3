@@ -3,34 +3,31 @@ package trainer_schedule.dao;
 import java.sql.*;
 import java.util.*;
 
-import trainer_schedule.dto.TrainerDTO;
-
 public class TrainerDAO {
+    private static final String URL = "jdbc:mysql://localhost:3306/health";
+    private static final String USER = "aloha";
+    private static final String PASSWORD = "123456";
+
     private Connection getConnection() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/aloha", "aloha", "123456");
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    // ✅ 트레이너 목록 (ID + 이름)
-    public List<TrainerDTO> getTrainerList() {
-        List<TrainerDTO> list = new ArrayList<>();
-        String sql = "SELECT trainer_id, name FROM trainer ORDER BY name";
-
+    // ✅ trainer_schedule 테이블에서 고유 트레이너 이름 목록 추출
+    public List<String> getTrainerNames() {
+        List<String> trainerList = new ArrayList<>();
+        String sql = "SELECT DISTINCT trainer_name FROM trainer_schedule ORDER BY trainer_name";
         try (
             Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery()
         ) {
             while (rs.next()) {
-                TrainerDTO dto = new TrainerDTO();
-                dto.setTrainerId(rs.getInt("trainer_id"));
-                dto.setName(rs.getString("name"));
-                list.add(dto);
+                trainerList.add(rs.getString("trainer_name"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return list;
+        return trainerList;
     }
 }
