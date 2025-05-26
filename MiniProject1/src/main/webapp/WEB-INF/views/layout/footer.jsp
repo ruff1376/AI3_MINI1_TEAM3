@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/layout/common.jsp" %>
+<%@ include file="common.jsp" %>
 
 <footer class="text-light border-top">
 	<div class="footer-con d-flex justify-content-between align-items-center px-5">

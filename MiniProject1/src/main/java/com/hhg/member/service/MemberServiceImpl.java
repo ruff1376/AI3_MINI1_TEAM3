@@ -1,8 +1,6 @@
 package com.hhg.member.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.hhg.member.dao.MemberDAO;
 import com.hhg.member.dto.Member;
@@ -28,16 +26,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member selectById(int no) {
-		Member member = null;
-		try {
-			Map<Object, Object> map = new HashMap<>();
-			map.put("no", no);
-			member = memberDAO.selectBy(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return member;
+	public Member read(int no) {
+		return memberDAO.selectById(no);
 	}
 
 	@Override

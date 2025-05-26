@@ -1,4 +1,4 @@
-package com.hhg.ptschedule.dao;
+package com.hhg.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DBUtil {
 
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // MySQL 8 이상
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
