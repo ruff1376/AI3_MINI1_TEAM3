@@ -26,7 +26,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>관리자</title>
-	<link rel="stylesheet" href="<%=root%>/static/css/admin.css" />
+	<link rel="stylesheet" href="<%= root %>/static/css/admin.css" />
 	<jsp:include page="../layout/link.jsp" />
 </head>
 <body class="bg-white d-flex flex-column min-vh-100">
