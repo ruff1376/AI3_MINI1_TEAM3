@@ -52,7 +52,7 @@ public class TrainerServlet extends HttpServlet {
 //		List<QnADTO> pageList = QnADAO.getAll();
 //		request.setAttribute("pageList", pageList);
 		
-		page = "/WEB-INF/views/admin/index.jsp";
+		page = "/WEB-INF/views/admin/admin.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
 	}
