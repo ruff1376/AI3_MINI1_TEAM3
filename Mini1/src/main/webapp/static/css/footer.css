@@ -24,12 +24,8 @@ footer {
 }
 
 .footer-menu {
-  display: flex;
   gap: 40px;
   list-style: none;
-  font-weight: 500;
-  margin-right: auto;
-  margin-left: 380px;
 }
 
 .footer-menu li a {
