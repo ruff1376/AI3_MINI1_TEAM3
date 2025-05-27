@@ -6,6 +6,8 @@ import java.util.List;
 import com.hhg.admin.dto.Trainer;
 import com.hhg.admin.service.TrainerService;
 import com.hhg.admin.service.TrainerServiceImpl;
+import com.hhg.cs.QnADAO;
+import com.hhg.cs.QnADTO;
 import com.hhg.machine.dto.GymMachine;
 import com.hhg.machine.service.MachineService;
 import com.hhg.machine.service.MachineServiceImpl;
@@ -46,6 +48,9 @@ public class TrainerServlet extends HttpServlet {
 		
 		List<GymMachine> gymMachineList = machineService.list();
 		request.setAttribute("gymMachineList", gymMachineList);
+		
+//		List<QnADTO> pageList = QnADAO.getAll();
+//		request.setAttribute("pageList", pageList);
 		
 		page = "/WEB-INF/views/admin/index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);

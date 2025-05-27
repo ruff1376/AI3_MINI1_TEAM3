@@ -3,23 +3,23 @@
 <%@ include file="common.jsp" %>
 
 <footer class="text-light border-top bg-secondary">
-	<div class="footer-container d-flex align-item-center px-5 border-bottom position-relative">
+	<div class="footer-container d-flex align-items-center justify-content-center px-5 border-bottom position-relative">
 	    <!-- 로고 및 메뉴 -->
 	    <div class="d-flex justify-content-between w-100">
 	    	<!-- 로고 -->
-  			<a href="<%= root %>/admin" class="me-5">
-    			<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" style="width: 60px; height: auto;">
+  			<a href="<%= root %>/admin" class="me-5 logo">
+    			<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" style="width: 80px; height: auto;">
   			</a>
 	       
 	        <!-- 메뉴 -->
-	        <ul class="footer-menu d-flex align-items-center fw-semibold my-0" id="menu-border">
+	        <ul class="footer-menu px-0 d-flex fw-semibold position-absolute top-50 start-50 translate-middle m-0" id="menu-border">
 	            <li><a class="text-light text-decoration-none footer-link" href="<%= root %>/admin/memberlist">회원관리</a></li>
 	            <li><a class="text-light text-decoration-none footer-link" href="<%= root %>/admin/schedule">예약관리</a></li>
 	            <li><a class="text-light text-decoration-none footer-link" href="<%= root %>/admin/machine">기구현황</a></li>
 	            <li><a class="text-light text-decoration-none footer-link" href="<%= root %>/admin/sales">매출현황</a></li>
 	            <li><a class="text-light text-decoration-none footer-link" href="#">문의사항</a></li>
 	        </ul>
-	    </div>
+	    </div>s
 	    
 
 	    <!-- 카피라이트 -->

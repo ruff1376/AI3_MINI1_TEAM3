@@ -9,6 +9,9 @@ footer {
 	height: 80px;
 }
 
+.logo {
+	padding-left: 12px;
+}
 
 .footer-top {
  	display: flex;
@@ -21,11 +24,8 @@ footer {
 }
 
 .footer-menu {
-  display: flex;
   gap: 40px;
   list-style: none;
-  font-weight: 500;
-  margin: auto;
 }
 
 .footer-menu li a {
