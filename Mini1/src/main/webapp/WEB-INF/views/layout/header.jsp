@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="common.jsp" %>
 
-<nav class="navbar navbar-expand-lg px-5 py-0">
+<nav class="navbar navbar-expand-lg px-5 py-0 sticky-top">
 	<div class="container-fluid">
     	<!-- 로고 / 홈 링크 -->
     	<a class="navbar-brand" href="<%= root %>/admin">

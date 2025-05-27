@@ -7,8 +7,8 @@
 	    <!-- 로고 및 메뉴 -->
 	    <div class="d-flex justify-content-between w-100">
 	    	<!-- 로고 -->
-  			<a href="<%= root %>/admin" class="me-5">
-    			<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" style="width: 60px; height: auto;">
+  			<a href="<%= root %>/admin" class="me-5 logo">
+    			<img src="<%= root %>/static/img/logo.png" alt="할건해야짐" style="width: 80px; height: auto;">
   			</a>
 	       
 	        <!-- 메뉴 -->
