@@ -29,10 +29,15 @@ function goToDetail(memberNo) {
 	fetch(`/Mini1/admin/memberlist?id=${memberNo}`)
 		.then(res => res.json())
 		.then(data => {
+			// 날짜 문자열 "2025-05-01 00:00:00.0" → "2025.05.01"
+			const dateStr = data.joinDate.split(' ')[0]; // "2025-05-01"
+			const parts = dateStr.split('-'); // ["2025", "05", "01"]
+			const formattedDate = `${parts[0]}.${parts[1]}.${parts[2]}`;
+			
 			document.getElementById("modalMemberNo").textContent = data.memberNo;
 			document.getElementById("modalName").textContent = data.name;
 			document.getElementById("modalPhone").textContent = data.phone;
-			document.getElementById("modalJoinDate").textContent = data.joinDate;
+			document.getElementById("modalJoinDate").textContent = formattedDate;
 			document.getElementById("modalPtCount").textContent = `${data.usedCount} / ${data.totalCount}`;
 
 			const modal = new bootstrap.Modal(document.getElementById('memberModal'));
