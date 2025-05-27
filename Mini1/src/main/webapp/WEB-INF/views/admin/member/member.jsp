@@ -20,7 +20,6 @@
 	<jsp:include page="../../layout/header.jsp" />
 
 	<%-- [Contents] ######################################################### --%>
-
 	<main class="flex-grow-1">
 		<div class="container mt-5 mb-5">
 			<div class="text-center border-bottom pb-4">

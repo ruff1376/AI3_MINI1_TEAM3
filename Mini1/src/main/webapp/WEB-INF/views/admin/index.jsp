@@ -7,19 +7,29 @@
 	<title>할건해야짐</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
-<body class="d-flex flex-column min-vh-100">
-	<jsp:include page="/WEB-INF/views/layout/header.jsp" />
+<body class="d-flex flex-column min-vh-100" style="background-image: url('<%= root %>/static/img/mlogo.png');">
+<jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
+	
+<div class="flex-grow-1">
 
-	<div class="flex-grow-1 container text-center mt-5 mb-5">
-		<h2>환영합니다</h2>
-		<div class="btn mt-4">
-			<a href="<%=root%>/admin" class="btn btn-outline-primary">관리자페이지로</a>
-		</div>
-	</div>
+  <div class="position-relative text-white text-center h-100">
 
+    <!-- 어두운 반투명 오버레이 -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+    <!-- 콘텐츠 -->
+    <div class="position-relative d-flex flex-column align-items-center justify-content-center h-100">
+      <h2 class="display-4 fw-bold text-white mb-4">환영합니다</h2>
+      <a href="<%= root %>/admin" class="btn btn-outline-light">관리자페이지로</a>
+    </div>
+
+  </div>
+
+</div>
+
+	
 	<%-- [Contents] ######################################################### --%>
 	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
-
 </body>
-</html>
+
