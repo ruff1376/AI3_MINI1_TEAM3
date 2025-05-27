@@ -201,8 +201,7 @@
             	  },
             	  title: { display: true, text: '날짜' } },
               y: { beginAtZero: true, title: { display: true, text: '매출액(원)' },
-            	  suggestedMax: 500000,
-            	  ticks: {stepSize: 50000 }
+            	  suggestedMax: 450000,
               }
             }
           }
