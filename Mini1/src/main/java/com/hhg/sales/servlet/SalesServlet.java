@@ -117,11 +117,6 @@ public class SalesServlet extends HttpServlet {
 			int trainerid = Integer.parseInt(req.getParameter("trainerid"));
 	        int amount = Integer.parseInt(req.getParameter("amount"));
 	        String note = req.getParameter("note");
-	        System.out.println(trainerid);
-	        System.out.println(trainerid);
-	        System.out.println(trainerid);
-	        System.out.println(trainerid);
-	        System.out.println(trainerid);
 	        Sales sale = Sales.builder()
 	        				  .salesId(salesid)
 			  				  .trainerId(trainerid)
