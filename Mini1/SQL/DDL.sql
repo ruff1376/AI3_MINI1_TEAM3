@@ -131,7 +131,6 @@ ALTER TABLE `macro_record` ADD CONSTRAINT `FK_member_TO_macro_record_1` FOREIGN 
 ALTER TABLE `macro_comment` ADD CONSTRAINT `FK_trainer_TO_macro_comment_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainer` (`trainer_id`);
 ALTER TABLE `pt_schedule` ADD CONSTRAINT `FK_trainer_TO_pt_schedule_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainer` (`trainer_id`);
 ALTER TABLE `pt_schedule` ADD CONSTRAINT `FK_member_TO_pt_schedule_1` FOREIGN KEY (`member_no`) REFERENCES `member` (`member_no`);
-ALTER TABLE `sales` ADD CONSTRAINT `FK_trainer_TO_sales_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainer` (`trainer_id`);
 ALTER TABLE `comment` ADD CONSTRAINT `FK_trainer_TO_comment_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainer` (`trainer_id`);
 ALTER TABLE `pt_reservation` ADD CONSTRAINT `FK_member_TO_pt_reservation_1` FOREIGN KEY (`member_no`) REFERENCES `member` (`member_no`);
 ALTER TABLE `pt_reservation` ADD CONSTRAINT `FK_trainer_TO_pt_reservation_1` FOREIGN KEY (`trainer_id`) REFERENCES `trainer` (`trainer_id`);

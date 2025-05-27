@@ -34,10 +34,16 @@
 
 			<div class="table-box">
 				<table class="table table-hover">
+					<colgroup>
+						<col style="width: 5%;" />
+						<col style="width: 55%;" />
+						<col style="width: 20%;" />
+						<col style="width: 20%;" />
+				    </colgroup>
 					<thead class="table-dark text-center">
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col" class="w-50">이름</th>
+							<th scope="col">이름</th>
 							<th scope="col">전화번호</th>
 							<th scope="col">등록일자</th>
 						</tr>
