@@ -63,13 +63,14 @@ body {
 	text-decoration: underline;
 }
 .qna-answerbox {
-	background: #c6eafd;
-	border-radius: 4px;
-	padding: 16px 18px 24px 18px;
-	margin: 20px auto 0 auto;
-	width: 80%;
-	max-width: 700px;
-	box-sizing: border-box;
+    width: 80%;
+    max-width: 700px;
+    background: #c6eafd;
+    padding: 16px 18px 24px 18px;
+    border-radius: 6px;
+    margin: 20px auto 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;  /* ★ 이 한 줄로 침범 완벽 차단! */
 }
 .qna-answerbox label {
 	font-weight: bold;
@@ -77,14 +78,20 @@ body {
 	display: block;
 }
 .qna-answerbox textarea {
-	width: 100%;
-	font-size: 1.13em;
-	margin-top: 7px;
-	border: none;
-	border-radius: 4px;
-	min-height: 80px;
-	padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    font-size: 1em;
+    margin-top: 7px;
+    border: none;
+    border-radius: 4px;
+    min-height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;    /* 드래그 크기조절 완전 금지 */
+    display: block;
+    background: #fff;
 }
+
 .qna-btn-row {
 	text-align: right;
 	margin-top: 14px;
@@ -108,7 +115,7 @@ body {
 	background: #71d3e6;
 }
 .badge-answer {
-	font-size: 0.98em;
+	font-size: 0.8em;
 	padding: 0.34em 0.78em;
 	border-radius: 10px;
 	font-weight: 500;
