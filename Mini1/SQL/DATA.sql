@@ -30,7 +30,7 @@ INSERT INTO trainer (name, phone, admin) VALUES
 ('박트레이너', '010-2222-2222', 0),
 ('이트레이너', '010-3333-3333', 0),
 ('최트레이너', '010-4444-4444', 0),
-('정트레이너', '010-5555-5555', 0),
+('정트레이너', '010-5555-5555', 0);
 
 
 -- pt_history
@@ -320,3 +320,18 @@ INSERT INTO inbody (member_no, record_date, weight, muscle_mass, fat_percent, no
 INSERT INTO program_record (member_no, gym_machine_id, history_id, name, weight, reps, volume) VALUES
 (1, 1, 1, '벤치프레스', 60, 10, 600),
 (2, 2, 2, '런닝머신', 0, 30, 0);
+
+
+
+-- question
+
+
+
+
+
+
+
+
+
+
+

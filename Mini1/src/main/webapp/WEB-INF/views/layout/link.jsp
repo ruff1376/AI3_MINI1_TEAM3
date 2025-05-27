@@ -9,3 +9,4 @@
  <link rel="stylesheet" href="<%= root %>/static/css/header.css">
  <link rel="stylesheet" href="<%= root %>/static/css/footer.css">
  <link rel="stylesheet" href="<%= root %>/static/css/index.css">
+ 

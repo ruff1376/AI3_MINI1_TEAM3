@@ -22,7 +22,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member select(int no) {
-		return null;
+		Member member = null;
+		try {
+			member = memberDAO.select(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return member;
 	}
 	
 	@Override
