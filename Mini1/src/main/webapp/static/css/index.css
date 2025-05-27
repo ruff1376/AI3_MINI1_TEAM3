@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+body {
+	background-image: url('/static/img/main-logo.png');
+  	background-size: contain;
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	height: 100px; 
+}
