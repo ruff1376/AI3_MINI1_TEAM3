@@ -115,15 +115,15 @@
 				<div class="section-title">미답변 문의사항</div>
 				<c:forEach var="q" items="${questionList}">
 					<c:if test="${q.status == 0}">
-						<c:forEach var="pt" items="${ptScheduleList}">
-							<c:if
+<%-- 						<c:forEach var="pt" items="${ptScheduleList}"> --%>
+<%-- 							<c:if --%>
 								test="${pt.trainerId == param.trainerId && pt.memberNo == q.writer}">
 								<div class="d-flex justify-content-between rounded-row">
 									<div>${q.writer}</div>
 									<div>${q.title}</div>
 								</div>
-							</c:if>
-						</c:forEach>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
 					</c:if>
 				</c:forEach>
 			</div>
