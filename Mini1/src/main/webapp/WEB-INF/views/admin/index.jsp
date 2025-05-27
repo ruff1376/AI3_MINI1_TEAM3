@@ -7,7 +7,7 @@
 	<title>할건해야짐</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
-<body class="d-flex flex-column min-vh-100" style="background-image: url('<%= root %>/static/img/mlogo.png');">
+<body class="d-flex flex-column min-vh-100" style="background-image: url('<%= root %>/static/img/bgimg.png');">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	

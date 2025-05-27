@@ -29,11 +29,11 @@
 	<link rel="stylesheet" href="<%=root%>/static/css/admin.css" />
 	<jsp:include page="../layout/link.jsp" />
 </head>
-<body class="bg-white">
+<body class="bg-white d-flex flex-column min-vh-100">
 
 	<jsp:include page="../layout/header.jsp" />
 
-	<main>
+	<main class="flex-grow-1">
 		<div class="container-lg py-4">
 
 			<!-- 트레이너 선택 -->
