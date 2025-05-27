@@ -33,6 +33,7 @@ public class MachineServlet extends HttpServlet {
 		if( path == null || path.equals("/") ) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/admin/machine/machine.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
         
  		// 기구 목록
@@ -46,6 +47,7 @@ public class MachineServlet extends HttpServlet {
  			request.setAttribute("list", machineList);
  			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
  			dispatcher.forward(request, response);
+ 			return;
  		}
  		
 		// 기구 조회 수정
@@ -56,6 +58,7 @@ public class MachineServlet extends HttpServlet {
 			page = "/WEB-INF/views/admin/machine/edit.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			return;
 		}
         
 		// 기구 등록
@@ -63,6 +66,7 @@ public class MachineServlet extends HttpServlet {
 			page = "/WEB-INF/views/admin/machine/create.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+			return;
 		}
     }
 

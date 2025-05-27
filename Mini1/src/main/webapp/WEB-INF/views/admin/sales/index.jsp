@@ -8,24 +8,23 @@
 	<title>매출 조회</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 	
-	<style>
-		.btn-trainer:not(:checked) {
-			background-color: transparent;
-		}
-	</style>
+
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 <%-- [Contents] ######################################################### --%>
-<div class="container my-5">
+<div class="flex-grow-1 container my-5">
 	<h2 class="text-center mb-5">트레이너별 매출 차트</h2>
+	<a href="<%= root %>/admin/sales/list" class="btn btn-outline-success">리스트로 보기</a>
 	<div class="row justify-content-between p-3 mb-3">
 		<div id="sidebar" class="card p-4 col-md-3">
 			<h5>기간</h5>
 			<select id="period" class="form-select mb-3">
-				<option value="7">1주일</option>
-				<option value="30" selected>1개월</option>
+				<option value="0">전체</option>
+				<option value="7" selected>최근 1주</option>
+				<option value="30">최근 1개월</option>
 			</select>
 			<hr>
 			<h5>트레이너</h5>
@@ -143,26 +142,34 @@
 
       function renderChart() {
         const selectedTrainers = Array.from(document.querySelectorAll('#trainer-list input:checked')).map(cb => parseInt(cb.value));
-        const periodDays = parseInt(document.getElementById('period').value);
-        const today = new Date();
-        const startDate = new Date(today);
-        startDate.setDate(today.getDate() - periodDays);
+        const periodValue = document.getElementById('period').value;
+        let startDate = null;
 
+        
+        if (periodValue !== "0") {
+          const periodDays = parseInt(periodValue);
+          const today = new Date();
+          startDate = new Date(today);
+          startDate.setDate(today.getDate() - periodDays);
+        }
+        
+        
         const labels = [...new Set([].concat(...selectedTrainers.map(id =>
-          salesData[id]?.map(s => s.date) || []
-        )))].sort();
-        
-        
+        (salesData[id] || [])
+          .filter(s => !startDate || new Date(s.date) >= startDate)
+          .map(s => s.date)
+      )))].sort();
 
 
         const datasets = selectedTrainers.map(id => {
           const trainer = trainerList.find(t => t.id === id);
           const trainerSales = {};
           (salesData[id] || []).forEach(s => {
-//             if (new Date(s.date) >= startDate) {
-              trainerSales[s.date] = (trainerSales[s.date] || 0) + s.amount;
-//             }
-          });
+        	  const saleDate = new Date(s.date);
+        	  if (!startDate || saleDate >= startDate) {
+        	    trainerSales[s.date] = (trainerSales[s.date] || 0) + s.amount;
+        	  }
+        	});
 
           if (!trainerColors[id]) trainerColors[id] = getRandomColor();
 
@@ -172,7 +179,7 @@
             borderColor: trainerColors[id],
             backgroundColor: 'transparent',
             fill: false,
-            tension: 0.3
+            tension: 0
           };
         });
 
@@ -186,8 +193,17 @@
               title: { display: true, text: '트레이너별 매출 추이 (꺾은선 그래프)' }
             },
             scales: {
-              x: { title: { display: true, text: '날짜' } },
-              y: { beginAtZero: true, title: { display: true, text: '매출액(원)' } }
+              x: {
+            	  type: 'time',
+            	  time: {
+            	    unit: 'day',
+            	    tooltipFormat: 'yyyy-MM-dd'
+            	  },
+            	  title: { display: true, text: '날짜' } },
+              y: { beginAtZero: true, title: { display: true, text: '매출액(원)' },
+            	  suggestedMax: 500000,
+            	  ticks: {stepSize: 50000 }
+              }
             }
           }
         });
