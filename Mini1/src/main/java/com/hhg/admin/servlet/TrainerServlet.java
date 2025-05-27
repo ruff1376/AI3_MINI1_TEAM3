@@ -3,11 +3,14 @@ package com.hhg.admin.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import com.alohaclass.jdbc.dto.PageInfo;
 import com.hhg.admin.dto.Trainer;
 import com.hhg.admin.service.TrainerService;
 import com.hhg.admin.service.TrainerServiceImpl;
-import com.hhg.cs.QnADAO;
-import com.hhg.cs.QnADTO;
+import com.hhg.cs.dao.QuestionDAO;
+import com.hhg.cs.dto.Question;
+import com.hhg.cs.service.QuestionService;
+import com.hhg.cs.service.QuestionServiceImpl;
 import com.hhg.machine.dto.GymMachine;
 import com.hhg.machine.service.MachineService;
 import com.hhg.machine.service.MachineServiceImpl;
@@ -33,6 +36,7 @@ public class TrainerServlet extends HttpServlet {
 	private PTScheduleService ptScheduleService = new PTScheduleServiceImpl();
 	private MemberService memberService = new MemberServiceImpl();
 	private MachineService machineService = new MachineServiceImpl();
+	private QuestionService questionService = new QuestionServiceImpl(new QuestionDAO());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = "";
@@ -49,8 +53,9 @@ public class TrainerServlet extends HttpServlet {
 		List<GymMachine> gymMachineList = machineService.list();
 		request.setAttribute("gymMachineList", gymMachineList);
 		
-//		List<QnADTO> pageList = QnADAO.getAll();
-//		request.setAttribute("pageList", pageList);
+//		PageInfo<Question> pageInfo = (PageInfo<Question>) questionService.list();
+//		List<Question> questionList = pageInfo.getList();
+//		request.setAttribute("questionList", questionList);
 		
 		page = "/WEB-INF/views/admin/admin.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
