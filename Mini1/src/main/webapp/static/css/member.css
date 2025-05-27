@@ -38,14 +38,6 @@ body {
 	background-color: #6dd4b5 !important;
 }
 
-.custom-row td:first-child {
-	border-radius: 12px;
-}
-
-.custom-row td:last-child {
-	border-radius: 12px;
-}
-
 .table-box {
 	max-width: 1000px;
 	margin: 0 auto;
