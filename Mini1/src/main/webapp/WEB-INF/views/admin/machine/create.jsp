@@ -8,11 +8,11 @@
 	<title>운동기구 등록</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container mt-5 mb-5">
+<div class="flex-grow-1 container mt-5 mb-5">
   <div class="card shadow-lg">
     <div class="card-header bg-secondary text-white">
       <h4 class="mb-0">운동기구 등록</h4>

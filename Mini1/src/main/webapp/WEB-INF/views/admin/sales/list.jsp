@@ -11,8 +11,8 @@
 <body>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 <%-- [Contents] ######################################################### --%>
-<body>
-	<div class="container mt-5">
+<body class="d-flex flex-column min-vh-100">
+	<div class="flex-grow-1 container mt-5">
 	    <h2 class="mb-4 text-center">매출 리스트</h2>
 	    <div class="mb-3 d-flex justify-content-between">
 	        <a href="../sales" class="btn btn-outline-success">차트로 보기</a>

@@ -8,12 +8,12 @@
 	<title>운동기구 조회/수정/삭제</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container mt-5 mb-5">
-  <h2>기구 정보 수정</h2>
+<div class="flex-grow-1 card container mt-5 mb-5">
+  <h2 class="mt-3">기구 정보 수정</h2>
   <form id="form" action="<c:url value='/admin/machine/edit'/>" method="post">
     <input type="hidden" name="id" value="${machine.gymMachineId}" />
     <div class="mb-3">
@@ -37,7 +37,7 @@
         <option ${machine.category == 'ETC' ? 'selected' : ''}>ETC</option>
       </select>
     </div>
-    <div class="mb-3">
+    <div class="mb-5">
       <label class="form-label">상태</label>
       <input type="text" name="status" value="${machine.status}" class="form-control" required />
     </div>

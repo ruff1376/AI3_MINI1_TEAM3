@@ -11,8 +11,8 @@
 <body>
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 <%-- [Contents] ######################################################### --%>
-<body>
-	<div class="container mt-5 mb-5">
+<body class="d-flex flex-column min-vh-100">
+	<div class="flex-grow-1 container mt-5 mb-5">
 	    <h2 class="mb-4 text-center">매출 수정</h2>
 	    <form id="form" action="<c:url value='/admin/sales/edit'/>" method="post" class="border p-4 rounded bg-light">
 	        <input type="hidden" name="salesid" value="${sales.salesId}" />
@@ -45,8 +45,8 @@
 	        </div>
 	        <div class="d-flex justify-content-between">
 		        <div class="d-flex">
-		            <button type="submit" class="btn btn-primary">수정</button>
-		            <button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제</button>
+		            <button type="submit" class="btn btn-primary">수정완료</button>
+		            <button type="button" class="btn btn-danger ms-2" onclick="remove()">삭제하기</button>
 		        </div>
 		        <div>
 		            <a href="list" class="btn btn-secondary">취소</a>

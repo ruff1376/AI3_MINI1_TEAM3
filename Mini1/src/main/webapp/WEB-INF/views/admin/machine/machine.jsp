@@ -7,11 +7,11 @@
 	<title>운동기구 리스트 메인</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <jsp:include page="/WEB-INF/views/layout/header.jsp" />
 	<%-- [Contents] ######################################################### --%>
 	
-<div class="container text-center mt-5 mb-5">
+<div class="flex-grow-1 container text-center mt-5 mb-5">
     <h2>운동기구 카테고리</h2>
     <div class="btn-group mt-4" role="group">
         <a href="<%= root %>/admin/machine/list?category=CARDIO" class="btn btn-outline-primary">CARDIO</a>
