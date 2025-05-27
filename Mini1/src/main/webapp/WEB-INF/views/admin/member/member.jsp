@@ -16,12 +16,12 @@
 		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 	<jsp:include page="../../layout/header.jsp" />
 	
 	<%-- [Contents] ######################################################### --%>
 
-	<main>
+	<main class="flex-grow-1">
 		<div class="container mt-5 mb-5">
 			<div class="text-center border-bottom pb-4">
 				<h1 class="display-5 fw-bold">회원관리</h1>
