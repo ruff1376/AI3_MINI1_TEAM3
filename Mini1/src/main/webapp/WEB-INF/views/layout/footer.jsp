@@ -19,9 +19,8 @@
 	            <li><a class="text-light text-decoration-none footer-link" href="<%= root %>/admin/sales">매출현황</a></li>
 	            <li><a class="text-light text-decoration-none footer-link" href="#">문의사항</a></li>
 	        </ul>
-	    </div>s
+	    </div>
 	    
-
 	    <!-- 카피라이트 -->
 	</div>
 		<div>
