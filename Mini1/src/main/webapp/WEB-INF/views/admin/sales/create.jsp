@@ -42,7 +42,12 @@
 <%-- [Contents] ######################################################### --%>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 <jsp:include page="/WEB-INF/views/layout/script.jsp" />
-	
+	<c:if test="${not empty error}">
+	  <script>
+	    alert('${error}');
+	  </script>
+	</c:if>
+
 
 </body>
 </html>
