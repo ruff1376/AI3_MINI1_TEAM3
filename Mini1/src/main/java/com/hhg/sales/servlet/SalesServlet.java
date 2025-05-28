@@ -101,8 +101,8 @@ public class SalesServlet extends HttpServlet {
 			int trainerid = Integer.parseInt(req.getParameter("trainerid"));
 	        int amount = Integer.parseInt(req.getParameter("amount"));
 	        if (amount < 0) {
-	            req.setAttribute("error", "금액은 0 이상이어야 합니다.");
-	            page = "/WEB-INF/views/admin/sales/create.jsp";
+	            req.setAttribute("error", "금액은 1 이상이어야 합니다.");
+	            page = "/WEB-INF/views/admin/sales/list.jsp";
 	            req.getRequestDispatcher(page).forward(req, res);
 	            return;
 	        }
