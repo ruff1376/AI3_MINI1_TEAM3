@@ -275,13 +275,13 @@ INSERT INTO pt_reservation (member_no, trainer_id, book_date, book_time) VALUES
 -- gym_machine
 INSERT INTO `gym_machine` (`name`, `brand`, `category`, `status`) VALUES
 -- CARDIO
-('Treadmill TRX4500', 'Life Fitness', 'CARDIO', '정상'),
+('Treadmill TRX4500', 'Life Fitness', 'CARDIO', '점검 : 땀 닦기'),
 ('Elliptical E95', 'Sole', 'CARDIO', '정상'),
 ('Upright Bike C1', 'Life Fitness', 'CARDIO', '정상'),
 ('Rowing Machine Concept2', 'Concept2', 'CARDIO', '정상'),
 ('StairMaster SM5', 'StairMaster', 'CARDIO', '정상'),
-('Spin Bike IC7', 'Matrix', 'CARDIO', '정상'),
-('Air Bike AssaultBike', 'Assault Fitness', 'CARDIO', '정상'),
+('Spin Bike IC7', 'Matrix', 'CARDIO', '점검 : 땀 닦기'),
+('Air Bike AssaultBike', 'Assault Fitness', 'CARDIO', '점검 : 땀 닦기'),
 ('Arc Trainer 630A', 'Cybex', 'CARDIO', '정상'),
 
 -- CABLE
@@ -289,20 +289,20 @@ INSERT INTO `gym_machine` (`name`, `brand`, `category`, `status`) VALUES
 ('Functional Trainer', 'Inspire', 'CABLE', '정상'),
 ('Lat Pulldown', 'Technogym', 'CABLE', '정상'),
 ('Seated Row', 'Hammer Strength', 'CABLE', '정상'),
-('Triceps Pushdown', 'Life Fitness', 'CABLE', '정상'),
+('Triceps Pushdown', 'Life Fitness', 'CABLE', '케이블 점검'),
 ('Dual Adjustable Pulley', 'Precor', 'CABLE', '정상'),
-('Biceps Curl Cable', 'Cybex', 'CABLE', '정상'),
+('Biceps Curl Cable', 'Cybex', 'CABLE', '가죽 점검'),
 ('Standing Cable Chest Press', 'Nautilus', 'CABLE', '정상'),
 
 -- PLATE
 ('Leg Press', 'Hammer Strength', 'PLATE', '정상'),
-('Hack Squat', 'Body-Solid', 'PLATE', '정상'),
+('Hack Squat', 'Body-Solid', 'PLATE', '점검 : 마찰부 그리스칠하기'),
 ('Chest Press', 'Hammer Strength', 'PLATE', '정상'),
 ('Shoulder Press', 'Technogym', 'PLATE', '정상'),
 ('Incline Press', 'Matrix', 'PLATE', '정상'),
 ('Pendulum Squat', 'Arsenal Strength', 'PLATE', '정상'),
 ('T-Bar Row', 'Rogue', 'PLATE', '정상'),
-('Hip Thrust Machine', 'Booty Builder', 'PLATE', '정상'),
+('Hip Thrust Machine', 'Booty Builder', 'PLATE', '체결벨트 점검필요'),
 
 -- ETC
 ('Ab Crunch Bench', 'Rogue', 'ETC', '정상'),
