@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>매출 조회</title>
+	<title>매출 등록</title>
 	<jsp:include page="/WEB-INF/views/layout/link.jsp" />
 </head>
 <body>
@@ -42,6 +42,7 @@
 <%-- [Contents] ######################################################### --%>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
 <jsp:include page="/WEB-INF/views/layout/script.jsp" />
+
 	<c:if test="${not empty error}">
 	  <script>
 	    alert('${error}');

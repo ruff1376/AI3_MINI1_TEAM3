@@ -47,7 +47,7 @@
         
         <div class="d-grid">
           <button type="submit" class="btn btn-success mb-1">등록</button>
-          <a href="list" class="btn btn-secondary">취소</a>
+          <a href="list?category=CARDIO" class="btn btn-secondary">취소</a>
         </div>
       </form>
     </div>
