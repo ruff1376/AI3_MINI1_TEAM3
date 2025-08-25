@@ -30,9 +30,3 @@ AI 3기 미니프로젝트1 3조 깃허브
 ![29](https://github.com/user-attachments/assets/998b6f74-89c8-4e2a-8f37-f4c0c7306e44)
 ![30](https://github.com/user-attachments/assets/5f6212cc-487e-4283-9306-4440298b8694)
 
-
----
-테스트
-![19](https://github.com/user-attachments/assets/7d83c664-afce-483f-a676-ccd5007a12b4)
-
-![24](https://github.com/user-attachments/assets/819ba48a-6c60-4d63-bb0b-e18359f5dd91)
