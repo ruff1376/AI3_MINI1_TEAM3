@@ -1,5 +1,70 @@
-# AI3_MINI1_TEAM3
-AI 3기 미니프로젝트1 3조 깃허브
+# 💪 할건해야짐
+> 헬스장 통합 관리 웹페이지
+--- 
+
+## 👥 프로젝트 참여 인원
+
+| 프로필 | 이름 | 역할 |
+|--------|------|------|
+| <img src="https://avatars.githubusercontent.com/ruff1376" width="40"> | [한지용](https://github.com/ruff1376) | 메인 화면, 회원 관리 |
+| <img src="https://avatars.githubusercontent.com/GUNW-O-O" width="40"> | [고건우](https://github.com/GUNW-O-O) | 기구 현황, 매출 현황 |
+| <img src="https://avatars.githubusercontent.com/jjwon55" width="40"> | [전주원](https://github.com/jjwon55) | 예약 관리 |
+| <img src="https://avatars.githubusercontent.com/hoodie-kr" width="40"> | [한동훈](https://github.com/hoodie-kr) | 문의사항 |
+
+
+## 🛠 기술 스택
+- **Language**: Java, HTML, CSS, JavaScript
+- **Database**: MySQL
+- **Framework & Library**: JSP, Servlet, Apache Tomcat, Lombok, Bootstrap, chart.js, choices.js
+- **Development Tool**: Eclipse, GitHub
+
+
+## 📝 주요 기능 (Features)
+### 1. 메인
+- 트레이너, 날짜 선택 후 이에 맞는 PT 일정, 점검 필요 기구, 미답변 문의사항 목록 표시
+- PT 일정 : 트레이너의 PT 일정(날짜, 회원)이 시간 순으로 표시
+- 점검 필요 기구 : 기구 상태에 ‘점검’이란 단어가 포함되어 있는 기구 목록 표시
+- 미답변 문의사항(미구현) : 답변이 없는 문의사항 목록 표시 및 클릭 시 답변 화면으로 이동
+
+### 2. 회원 관리
+- 회원 목록 표시 및 회원명 검색
+- 회원 정보 상세 조회
+
+### 3. 기구 관리
+- 운동기구 조회, 등록, 수정, 삭제
+- 카테고리(유산소, 케이블, 원판, 기타) 별로 리스트를 표시
+- 카테고리 버튼을 클릭하면 해당 카테고리로 이동하는 화면
+- 상태란에 “점검” 과 같은 키워드 등록시 메인화면 TODO에 노출
+- 표의 내용 클릭시 수정, 삭제 화면으로 이동
+
+### 4. 매출 관리
+- 차트뷰 에서는 최근1개월, 최근 1주, 전체 매출을 확인가능
+- 각 트레이너 별로 다른 색상의 그래프를 토글 가능
+- (미구현) 기간별로 묶어서 한점의 데이터로 표현
+- 리스트뷰 트레이너별 전체 매출을 확인가능
+- 리스트뷰에서는 트레이너 별로 아코디언탭이 생성
+- 아코디언탭 내부의 표를 클릭시 매출 확인, 수정, 삭제 화면으로 이동 가능
+- (미구현) 트레이너별 매출목록 페이징처리
+- (미구현) 트레이너별 매출 날짜 조회기능
+
+### 5. 예약 관리
+- 트레이너 스케줄 조회, 등록, 수정, 삭제
+- 달력 기반 UI로 트레이너 스케줄 조회
+- 날짜 클릭시 해당 날짜에 시간표 출력
+- 셀 클릭 → 회원 조회/선택 → 예약 저장
+- 중복 방지 / 수정 / 삭제 기능 포함
+- 회원 자동완성 (이름 + 전화번호)
+
+### 6. 문의사항
+- 관리자용 문의사항 목록 조회
+- 페이징 처리 및 제목 클릭 시 상세 페이지로 이동
+- 선택된 문의사항 상세 조회
+- 답변 조회/등록/수정 기능
+- 회원 정보와 트레이너 선택 포함
+- 답변 등록시 답변대기에서 답변완료로 전환 업데이트
+
+---
+
 ![1](https://github.com/user-attachments/assets/343eb9f9-55c1-46d6-959e-2bacd8bc4806)
 ![2](https://github.com/user-attachments/assets/68951f9f-ee51-444b-b1a0-ff3410ae401e)
 ![3](https://github.com/user-attachments/assets/c5912283-532f-4507-a682-2033a8a08b38)
